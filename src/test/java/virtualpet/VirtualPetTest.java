@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import org.wecancodeit.VirtualPet;
-
 public class VirtualPetTest {
 
 
@@ -32,5 +30,4 @@ public class VirtualPetTest {
 	        assertEquals(expected, 10);
 	    }
 	}
-	© We Can Code IT
 }
