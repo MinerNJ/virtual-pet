@@ -52,5 +52,13 @@ public class VirtualPet {
 	public int getHappiness() {
 		return happiness;
 	}
+	//time method
+	public void tick() {
+		int time = 1;
+		hunger += time;
+		boredom += time;
+		bladder += time;
+		loneliness += time;
+		}
 
 }

@@ -29,14 +29,14 @@ public class VirtualPetTest {
 		assertEquals(10, actual);
 	}
 	// Tick test example
-//	 @Test
-//	    public void shouldTick() {
-//	        VirtualPet pet = new VirtualPet("Kendrick");
-//
-//	        int initialHunger = pet.getHunger();
-//	        pet.tick();
-//	        int hungerAfterTick = pet.getHunger();
-//
-//	        assertEquals(initialHunger + 10, hungerAfterTick);
-//	    }
+	 @Test
+	    public void shouldTick() {
+	        VirtualPet pet = new VirtualPet("Kendrick", 0, 0, 0, 0, 0);
+
+	        int initialHunger = pet.getHunger();
+	        pet.tick();
+	        int hungerAfterTick = pet.getHunger();
+
+	        assertEquals(initialHunger + 1, hungerAfterTick);
+	    }
 }
