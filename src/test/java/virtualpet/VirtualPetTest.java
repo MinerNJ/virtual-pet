@@ -4,33 +4,30 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import org.wecancodeit.VirtualPet;
-
 public class VirtualPetTest {
 
 
 	    @Test
 	    public void shouldBeAbleToCreatePet() {
-	        VirtualPet pet = new VirtualPet();
+	        VirtualPet pet = new VirtualPet(null, 0, 0, 0, 0, 0);
 	    }
 
 	    @Test
 	    public void petShouldHaveName() {
-	        VirtualPet underTest = new VirtualPet("Jeff");
+	        VirtualPet underTest = new VirtualPet("Jeff", 0, 0, 0, 0, 0);
 
-	        String expected = underTest.getName();
+	        String actual = underTest.getName();
 
-	        assertEquals(expected, "Jeff");
+	        assertEquals(actual, "Jeff");
 	    }
 
 	    @Test
 	    public void shouldHaveDefaultHunger() {
-	        VirtualPet underTest = new VirtualPet("Steve");
+	        VirtualPet underTest = new VirtualPet("Steve", 10, 0, 0, 0, 0);
 
-	        int expected = underTest.getHunger;
+	        int actual = underTest.getHunger();
 
-	        assertEquals(expected, 10);
+	        assertEquals(actual, 10);
 	    }
 	}
-	© We Can Code IT
-}
+
