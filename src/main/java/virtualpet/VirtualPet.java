@@ -16,17 +16,16 @@ public class VirtualPet {
 		this.hunger = hunger;
 		this.boredom = boredom;
 		this.bladder = bladder;
-
 		this.loneliness = loneliness;
 		this.happiness = happiness;
 	}
 
 	// Methods
-		// Time - tick --> Increases all negative traits
-		// Feed
-		// Play
-		// Walk
-		// Affection
+	// Time - tick --> Increases all negative traits
+	// Feed
+	// Play
+	// Walk
+	// Affection
 
 	// Accessor Methods
 	public String getName() {
@@ -52,13 +51,35 @@ public class VirtualPet {
 	public int getHappiness() {
 		return happiness;
 	}
-	//time method
+
+	// time method
 	public void tick() {
 		int time = 1;
 		hunger += time;
 		boredom += time;
 		bladder += time;
 		loneliness += time;
-		}
+		happiness += 4;
+	}
+
+	public void feed() {
+		hunger -= hunger;
+		happiness -= happiness;
+	}
+
+	public void play() {
+		boredom -= boredom;
+		happiness -= happiness;
+	}
+
+	public void walk() {
+		bladder -= bladder;
+		happiness -= happiness;
+	}
+
+	public void hug() {
+		loneliness -= loneliness;
+		happiness -= happiness;
+	}
 
 }
