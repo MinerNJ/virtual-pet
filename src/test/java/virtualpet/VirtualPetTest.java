@@ -45,10 +45,9 @@ public class VirtualPetTest {
 	public void shouldFeed() {
 		VirtualPet pet = new VirtualPet("Kendrick", 10, 0, 0, 0, 0);
 
-		int initialHunger = pet.getHunger();
-		int hungerAfterFeed = initialHunger - 1;
+		pet.feed();
 
-		assertEquals(initialHunger - 1, hungerAfterFeed);
+		assertEquals(9, pet.getHunger());
 
 	}
 
@@ -56,10 +55,9 @@ public class VirtualPetTest {
 	public void shouldPlay() {
 		VirtualPet pet = new VirtualPet("Kendrick", 0, 10, 0, 0, 0);
 
-		int initialBoredom = pet.getBoredom();
-		int boredomAfterPlay = initialBoredom - 1;
+		pet.play();
 
-		assertEquals(initialBoredom - 1, boredomAfterPlay);
+		assertEquals(9, pet.getBoredom());
 
 	}
 
@@ -67,10 +65,9 @@ public class VirtualPetTest {
 	public void shouldWalk() {
 		VirtualPet pet = new VirtualPet("Kendrick", 0, 0, 10, 0, 0);
 
-		int initialBladder = pet.getBladder();
-		int bladderAfterWalk = initialBladder - 1;
+		pet.walk();
 
-		assertEquals(initialBladder - 1, bladderAfterWalk);
+		assertEquals(9, pet.getBladder());
 
 	}
 
@@ -78,10 +75,9 @@ public class VirtualPetTest {
 	public void shouldHug() {
 		VirtualPet pet = new VirtualPet("Kendrick", 0, 0, 0, 10, 0);
 
-		int initialLoneliness = pet.getLoneliness();
-		int lonelinessAfterHug = initialLoneliness - 1;
+		pet.hug();
 
-		assertEquals(initialLoneliness - 1, lonelinessAfterHug);
+		assertEquals(9, pet.getLoneliness());
 
 	}
 
@@ -89,9 +85,11 @@ public class VirtualPetTest {
 	public void happinessCheck() {
 		VirtualPet pet = new VirtualPet("Kendrick", 0, 0, 0, 0, 10);
 
-		int initialHappiness = pet.getHappiness();
-		int happinessAfter = initialHappiness - 4;
+		pet.feed();
+		pet.play();
+		pet.walk();
+		pet.hug();
 
-		assertEquals(initialHappiness - 4, happinessAfter);
+		assertEquals(6, pet.getHappiness());
 	}
 }
