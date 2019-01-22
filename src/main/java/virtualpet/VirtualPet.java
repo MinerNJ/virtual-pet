@@ -59,27 +59,27 @@ public class VirtualPet {
 		boredom += time;
 		bladder += time;
 		loneliness += time;
-		happiness += 4;
+		happiness += 2;
 	}
 
 	public void feed() {
-		hunger -= 1;
-		happiness -= 1;
+		hunger -= 2;
+		happiness -= 2;
 	}
 
 	public void play() {
-		boredom -= 1;
-		happiness -= 1;
+		boredom -= 2;
+		happiness -= 2;
 	}
 
 	public void walk() {
-		bladder -= 1;
-		happiness -= 1;
+		bladder -= 2;
+		happiness -= 2;
 	}
 
 	public void hug() {
-		loneliness -= 1;
-		happiness -= 1;
+		loneliness -= 2;
+		happiness -= 2;
 	}
 
 }
