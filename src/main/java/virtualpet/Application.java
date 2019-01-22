@@ -13,16 +13,16 @@ public class Application {
 
 		String name = input.nextLine();
 		VirtualPet pet = new VirtualPet(name, 5, 8, 3, 8, 24);
-
+	
 		System.out.println("Here's your new pet, " + pet.getName() + "!");
+		System.out.println("If you don't keep " + pet.getName() + " happy the shelter will take " + pet.getName() + " back!");
+		System.out.println("Keep " + pet.getName() + " happy by doing the following things:");
 		boolean repeatMenu = true;
 		while (repeatMenu) {
-			System.out.println("Keep " + pet.getName() + " happy by doing the following things:");
 			System.out.println("1. Feed " + pet.getName());
 			System.out.println("2. Play with " + pet.getName());
 			System.out.println("3. Walk " + pet.getName());
 			System.out.println("4. Hug " + pet.getName());
-			System.out.println("If you don't do these things enough the shelter will take " + pet.getName() + " back!");
 			System.out.println("You can Save and Exit at any time by saying \"Exit\"");
 
 			String menuSelection = input.nextLine();
@@ -36,17 +36,22 @@ public class Application {
 					System.exit(0);
 					repeatMenu = false;
 				} else if (exitAnswer.toLowerCase().equals("no") || exitAnswer.toLowerCase().equals("2")) {
+					System.out.println("What would you like to do?");
 					repeatMenu = true;
 				}
-				
+
 			} else if (menuSelection.toLowerCase().equals("feed") || menuSelection.toLowerCase().equals("1")) {
 				pet.feed();
+				System.out.println(pet.getName() + " says \"Thanks for feeding me! What next?\"");
 			} else if (menuSelection.toLowerCase().equals("play with") || menuSelection.toLowerCase().equals("2")) {
 				pet.play();
+				System.out.println(pet.getName() + " says \"I love to play! What next?\"");
 			} else if (menuSelection.toLowerCase().equals("walk") || menuSelection.toLowerCase().equals("3")) {
 				pet.walk();
+				System.out.println(pet.getName() + " says \"Oh boy, walks are my favorite! What next?\"");
 			} else if (menuSelection.toLowerCase().equals("hug") || menuSelection.toLowerCase().equals("4")) {
 				pet.hug();
+				System.out.println(pet.getName() + " says \"I love you too! What next?\"");
 			}
 
 		}
