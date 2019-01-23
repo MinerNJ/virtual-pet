@@ -16,15 +16,15 @@ public class Application {
 
 		System.out.println("Here's your new pet, " + pet.getName() + "!");
 		System.out.println(
-				"If you don't keep " + pet.getName() + " happy the shelter will take " + pet.getName() + " back!");
+				"If you don't keep " + pet.getName() + " happy," + pet.getName() + " will die!");
 		System.out.println("Keep " + pet.getName() + " happy by doing the following things:");
 		boolean repeatMenu = true;
 		while (repeatMenu) {
 			pet.tick();
 			if (pet.getHappiness() >= 32) {
-				System.out.println("You have mistreated " + pet.getName() + ", you monster. You must return "
-						+ pet.getName() + " to the shelter. You are not allowed to adopt " + "anymore pets.");
-				System.exit(0);
+				System.out.println("You have mistreated " + pet.getName() + ", you monster."
+						+ pet.getName() + " has died.");
+				System.exit(0); // Need a way to get it back to the initial menu
 				repeatMenu = false;
 			} else {
 				System.out.println("1. Feed " + pet.getName());
