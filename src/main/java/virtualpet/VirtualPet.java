@@ -81,5 +81,14 @@ public class VirtualPet {
 		loneliness -= 2;
 		happiness -= 2;
 	}
+	
+	public void checkStatus() {
+		System.out.println("Name is " + name);
+		System.out.println("Hunger is " + hunger);
+		System.out.println("Boredom is " + boredom);
+		System.out.println("Bladder is " + bladder);
+		System.out.println("Loneliness is " +loneliness);
+		System.out.println("Happiness is " + happiness);
+	}
 
 }

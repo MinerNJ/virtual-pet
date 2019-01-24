@@ -13,6 +13,7 @@ public class Application {
 
 		String name = input.nextLine();
 		VirtualPet pet = new VirtualPet(name, 5, 8, 3, 8, 24);
+		pet.checkStatus(); //Testingtesting
 
 		System.out.println("Here's your new pet, " + pet.getName() + "!");
 		System.out.println(

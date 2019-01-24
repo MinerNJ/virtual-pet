@@ -90,4 +90,8 @@ public class VirtualPetTest {
 
 		assertEquals(2, pet.getHappiness());
 	}
+	
+	
+
+	
 }
