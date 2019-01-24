@@ -19,14 +19,15 @@ public class PetShelter {
 		virtualPets.remove(pet.getName(), pet);
 	}
 	
-//	public HashMap<String, VirtualPet> getVirtualPets() {
-//		return virtualPets;
-//	}
+	public HashMap<String, VirtualPet> getVirtualPets() {
+		return virtualPets;
+	}
 
 	public VirtualPet findVirtualPet(String name) {
 		return virtualPets.get(name);
 	}
-	
+}
+		
 	
 
-}
+
