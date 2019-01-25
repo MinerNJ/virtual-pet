@@ -1,5 +1,6 @@
 package virtualpet;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 public class PetShelter {
