@@ -7,13 +7,29 @@ public class Application {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
+		
+		PetShelter petShelter = new PetShelter();
 
 		System.out.println("Welcome to the Virtual Pet Shelter!");
 		System.out.println("What would you like to name your pet?");
 
 		String name = input.nextLine();
 		VirtualPet pet = new VirtualPet(name, 5, 8, 3, 8, 24);
-		pet.checkStatus(); //Testingtesting
+		petShelter.addVirtualPet(pet);
+		
+		System.out.println("What would you like to name your pet?");
+
+		String name2 = input.nextLine();
+		VirtualPet pet2 = new VirtualPet(name2, 5, 8, 3, 8, 24);
+		petShelter.addVirtualPet(pet2);
+		
+		System.out.println("What would you like to name your pet?");
+
+		String name3 = input.nextLine();
+		VirtualPet pet3 = new VirtualPet(name3, 5, 8, 3, 8, 24);
+		petShelter.addVirtualPet(pet3);
+		
+		petShelter.getShelterStatus();
 
 		System.out.println("Here's your new pet, " + pet.getName() + "!");
 		System.out.println(

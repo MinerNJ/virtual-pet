@@ -27,11 +27,42 @@ public class PetShelter {
 		return virtualPets.get(name);
 	}
 	
+	//get status of all pets
+	public void getShelterStatus() {
+		Collection<VirtualPet> virtualPets = getVirtualPets().values();
+		for (VirtualPet pet : virtualPets) {
+			pet.checkStatus();
+		}
+	}
 	
 	public void feedAllPets() {
 		Collection<VirtualPet> virtualPets = getVirtualPets().values();
 		for (VirtualPet pet : virtualPets) {
 			pet.feed();
+		}
+	}
+	
+	//boredom
+	public void playWithAllPets() {
+		Collection<VirtualPet> virtualPets = getVirtualPets().values();
+		for (VirtualPet pet : virtualPets) {
+			pet.play();
+		}
+	}
+			
+	//bladder
+	public void walkAllPets() {
+		Collection<VirtualPet> virtualPets = getVirtualPets().values();
+		for (VirtualPet pet : virtualPets) {
+			pet.walk();
+		}
+	}
+	
+	//pet
+	public void hugAllPets() {
+		Collection<VirtualPet> virtualPets = getVirtualPets().values();
+		for (VirtualPet pet : virtualPets) {
+			pet.hug();
 		}
 	}
 }
