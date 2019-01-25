@@ -1,6 +1,5 @@
 package virtualpet;
 
-import java.util.Collection;
 import java.util.Map.Entry;
 
 import org.junit.Assert;
