@@ -48,5 +48,23 @@ public class PetShelterTest {
 		Assert.assertEquals("Buddy", foundPet.getName());	
 	}
 	
-	
+	@Test
+	public void shouldFeedAllPets() {
+		PetShelter underTest = new PetShelter();
+		VirtualPet buddy = new VirtualPet("Buddy", 5, 0, 0, 0, 5);
+		VirtualPet ralph = new VirtualPet("Ralph", 5, 0, 0, 0, 5);
+		VirtualPet george = new VirtualPet("George", 5, 0, 0, 0, 5);
+		 
+		underTest.addVirtualPet(buddy);
+		underTest.addVirtualPet(ralph);
+		underTest.addVirtualPet(george);
+
+		int beforeFeeding = buddy.getHunger() + ralph.getHunger() + george.getHunger();
+		underTest.feedAllPets();
+		int afterFeeding =  buddy.getHunger() + ralph.getHunger() + george.getHunger();
+		
+		Assert.assertEquals(beforeFeeding - 6, afterFeeding);
+		
+		
+	}
 }

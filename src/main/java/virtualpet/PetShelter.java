@@ -26,6 +26,14 @@ public class PetShelter {
 	public VirtualPet findVirtualPet(String name) {
 		return virtualPets.get(name);
 	}
+	
+	
+	public void feedAllPets() {
+		Collection<VirtualPet> virtualPets = getVirtualPets().values();
+		for (VirtualPet pet : virtualPets) {
+			pet.feed();
+		}
+	}
 }
 		
 	
