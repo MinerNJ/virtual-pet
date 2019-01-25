@@ -18,14 +18,7 @@ public class VirtualPet {
 		this.bladder = bladder;
 		this.loneliness = loneliness;
 		this.happiness = happiness;
-	}
-
-	// Methods
-	// Time - tick --> Increases all negative traits
-	// Feed
-	// Play
-	// Walk
-	// Affection
+	} // Random generator goes here!
 
 	// Accessor Methods
 	public String getName() {
@@ -83,12 +76,12 @@ public class VirtualPet {
 	}
 	
 	public void checkStatus() {
-		System.out.println("Name is " + name);
+		System.out.println("Pet name is " + name);
 		System.out.println("Hunger is " + hunger);
 		System.out.println("Boredom is " + boredom);
 		System.out.println("Bladder is " + bladder);
 		System.out.println("Loneliness is " +loneliness);
 		System.out.println("Happiness is " + happiness);
-	}
+	} // Return a string that contains the status
 
 }

@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class PetShelter {
 
 	private HashMap<String, VirtualPet> virtualPets = new HashMap<String, VirtualPet>();
-	
+
 	public int getShelterSize() {
 		return virtualPets.size();
 	}
@@ -18,7 +18,7 @@ public class PetShelter {
 	public void removeVirtualPet(VirtualPet pet) {
 		virtualPets.remove(pet.getName(), pet);
 	}
-	
+// Getter
 	public HashMap<String, VirtualPet> getVirtualPets() {
 		return virtualPets;
 	}
@@ -26,39 +26,46 @@ public class PetShelter {
 	public VirtualPet findVirtualPet(String name) {
 		return virtualPets.get(name);
 	}
-	
-	//get status of all pets
+
+	public void getPetNames() {
+		Collection<VirtualPet> virtualPets = getVirtualPets().values();
+		for (VirtualPet pet : virtualPets) {
+			System.out.println(pet.getName());
+		}
+	}
+
+	// get status of all pets
 	public void getShelterStatus() {
 		Collection<VirtualPet> virtualPets = getVirtualPets().values();
 		for (VirtualPet pet : virtualPets) {
 			pet.checkStatus();
 		}
 	}
-	
+
 	public void feedAllPets() {
 		Collection<VirtualPet> virtualPets = getVirtualPets().values();
 		for (VirtualPet pet : virtualPets) {
 			pet.feed();
 		}
 	}
-	
-	//boredom
+
+	// boredom
 	public void playWithAllPets() {
 		Collection<VirtualPet> virtualPets = getVirtualPets().values();
 		for (VirtualPet pet : virtualPets) {
 			pet.play();
 		}
 	}
-			
-	//bladder
+
+	// bladder
 	public void walkAllPets() {
 		Collection<VirtualPet> virtualPets = getVirtualPets().values();
 		for (VirtualPet pet : virtualPets) {
 			pet.walk();
 		}
 	}
-	
-	//pet
+
+	// pet
 	public void hugAllPets() {
 		Collection<VirtualPet> virtualPets = getVirtualPets().values();
 		for (VirtualPet pet : virtualPets) {
@@ -66,7 +73,3 @@ public class PetShelter {
 		}
 	}
 }
-		
-	
-
-

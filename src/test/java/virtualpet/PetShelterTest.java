@@ -1,7 +1,5 @@
 package virtualpet;
 
-import java.util.Map.Entry;
-
 import org.junit.Assert;
 import org.junit.Test;
 
