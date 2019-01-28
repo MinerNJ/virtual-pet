@@ -56,21 +56,103 @@ public class Application {
 				case "2":
 					System.out.println("Which pet is going to a new home?");
 					petShelter.getPetNames();
+					String toBeRemoved = input.nextLine().toLowerCase();
+					petShelter.removeVirtualPet(petShelter.findVirtualPet(toBeRemoved));
+					System.out.println(toBeRemoved + "has been removed!");
+
 					break;
 
 				// Interact with one pet
 				case "5":
 					System.out.println("Which pet do you want to interact with?");
-//					petShelter.getPetNames();
-//					String petSelection = input.nextLine();
-//					findVirtualPet(String petSelection);
+					petShelter.getPetNames();
+
+					String petSelection = input.nextLine();
+
+					VirtualPet petChoice = petShelter.findVirtualPet(petSelection);
+					System.out.println(petSelection + " is so happy to see you! What do you want to do?");
+
+					boolean petMenu = true;
+					while (petMenu) {
+						System.out.println("1. Feed " + petChoice.getName());
+						System.out.println("2. Play with " + petChoice.getName());
+						System.out.println("3. Walk " + petChoice.getName());
+						System.out.println("4. Hug " + petChoice.getName());
+						System.out.println("You can return to the main menu at any time by typing \"Exit\"");
+
+						String petMenuSelection = input.nextLine().toLowerCase();
+
+						switch (petMenuSelection) {
+
+						case "1":
+							if (petChoice.getHunger() <= 0) {
+								System.out.println(petChoice.getName()
+										+ " says, \"No thanks, I'm full! Let's do something else.\"");
+							} else {
+								petChoice.feed();
+								System.out.println(petChoice.getName() + " says \"Thanks for feeding me! What next?\"");
+							}
+
+							break;
+
+						case "2":
+							if (petChoice.getBoredom() <= 0) {
+								System.out.println(
+										petChoice.getName() + " says, \"I'm tired! Let's do something else.\"");
+							} else {
+								petChoice.play();
+								System.out.println(petChoice.getName() + " says \"I love to play! What next?\"");
+							}
+
+							break;
+
+						case "3":
+							if (petChoice.getBladder() <= 0) {
+								System.out.println(
+										petChoice.getName() + " says, \"Tank's tapped. Let's do something else.\"");
+							} else {
+								petChoice.walk();
+								System.out.println(
+										petChoice.getName() + " says \"Oh boy, walks are my favorite! What next?\"");
+							}
+							
+							break;
+							
+						case "4":
+							if (petChoice.getLoneliness() <= 0) {
+								System.out.println(petChoice.getName()
+										+ " says, \"NO MEANS NO - PLEASE STOP TOUCHING ME! Let's do something else.\"");
+							} else {
+								petChoice.hug();
+								System.out.println(petChoice.getName() + " says \"I love you too! What next?\"");
+							}
+							
+							break;
+							
+						case "exit":
+							petMenu = false;
+							System.out.println(petChoice.getName() + " had a lot of fun! Bye!");
+							break;
+	
+						} 
+						if(petChoice.getHappiness() > 32) {
+							petMenu = false;
+							petShelter.removeVirtualPet(petChoice);
+							System.out.println("You have mistreated " + petChoice.getName() + ", you monster." 
+							+ petChoice.getName() + " has died.");
+						}
+					}
+				}
+			}
+		}
+	}
+}
 //
 //					boolean repeatMenu = true;
 //					while (repeatMenu) {
 //						pet.tick();
 //						if (pet.getHappiness() >= 32) {
-//							System.out.println("You have mistreated " + pet.getName() + ", you monster." + pet.getName()
-//									+ " has died.");
+//							
 //							System.exit(0); // Need a way to get it back to the initial menu
 //							repeatMenu = false;
 //						} else {
@@ -96,50 +178,14 @@ public class Application {
 //									repeatMenu = true;
 //								}
 //
-//							} else if (menuSelection.toLowerCase().equals("feed")
-//									|| menuSelection.toLowerCase().equals("1")) {
-//								if (pet.getHunger() <= 0) {
-//									System.out.println(
-//											pet.getName() + " says, \"No thanks, I'm full! Let's do something else.\"");
-//								} else {
-//									pet.feed();
-//									System.out.println(pet.getName() + " says \"Thanks for feeding me! What next?\"");
-//								}
-//							} else if (menuSelection.toLowerCase().equals("play with")
-//									|| menuSelection.toLowerCase().equals("2")) {
-//								if (pet.getBoredom() <= 0) {
-//									System.out
-//											.println(pet.getName() + " says, \"I'm tired! Let's do something else.\"");
-//								} else {
-//									pet.play();
-//									System.out.println(pet.getName() + " says \"I love to play! What next?\"");
-//								}
-//							} else if (menuSelection.toLowerCase().equals("walk")
-//									|| menuSelection.toLowerCase().equals("3")) {
-//								if (pet.getBoredom() <= 0) {
-//									System.out.println(
-//											pet.getName() + " says, \"Tank's tapped. Let's do something else.\"");
-//								} else {
-//									pet.walk();
-//									System.out.println(
-//											pet.getName() + " says \"Oh boy, walks are my favorite! What next?\"");
-//								}
+//							} else if (
+//							
+//							
 //							} else if (menuSelection.toLowerCase().equals("hug")
 //									|| menuSelection.toLowerCase().equals("4")) {
-//								if (pet.getBoredom() <= 0) {
-//									System.out.println(pet.getName()
-//											+ " says, \"NO MEANS NO - PLEASE STOP TOUCHING ME! Let's do something else.\"");
-//								} else {
-//									pet.hug();
-//									System.out.println(pet.getName() + " says \"I love you too! What next?\"");
-//								}
+//								
 //							} else {
 //								System.out.println("Please make a valid menu selection:");
 //							}
 //
 //						}
-				}
-			}
-		}
-	}
-}
