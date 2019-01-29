@@ -76,12 +76,8 @@ public class VirtualPet {
 	}
 	
 	public void checkStatus() {
-		System.out.println("Pet name is " + name);
-		System.out.println("Hunger is " + hunger);
-		System.out.println("Boredom is " + boredom);
-		System.out.println("Bladder is " + bladder);
-		System.out.println("Loneliness is " +loneliness);
-		System.out.println("Happiness is " + happiness);
+		System.out.println(name + " has a hunger of " + hunger + ", a boredom of " + boredom + ", a bladder of " + bladder
+				+ ", a loneliness of " + loneliness + ", and a happiness of " + happiness + ".");
 	} // Return a string that contains the status
 
 }

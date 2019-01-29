@@ -10,9 +10,10 @@ public class Application {
 		Scanner input = new Scanner(System.in);
 
 		PetShelter petShelter = new PetShelter();
-
+// Shelter greeting
 		System.out.println("Welcome to your Virtual Pet Shelter!");
 		System.out.println("There are " + petShelter.getShelterSize() + " pets in your shelter.");
+// Shelter menu
 		boolean repeatMainMenu = true;
 		while (repeatMainMenu) {
 			System.out.println("What would you like to do?");
@@ -25,8 +26,9 @@ public class Application {
 			System.out.println("7. Help");
 
 			String mainMenuSelection = input.nextLine();
-			// User must admit at least one pet before interacting with the shelter:
-			if (petShelter.getShelterSize() < 1) {
+
+// User must admit at least one pet before interacting with the shelter
+			if (!mainMenuSelection.equalsIgnoreCase("1") && petShelter.getShelterSize() < 1) {
 				System.out.println("You need to admit a new pet to your shelter first.");
 				System.out.println("What would you like to name the new pet?");
 				String name = input.nextLine();
@@ -36,32 +38,76 @@ public class Application {
 				System.out.println("If you don't keep " + pet.getName() + " happy," + pet.getName() + " will die!");
 				System.out.println(
 						"Keep " + pet.getName() + " happy by feeding it, playing with it, walking it, and hugging it.");
-				// Once one pet is created, main menu loop restarts:
+				
+// Once one pet is created, main menu loop restarts:
 			} else {
 
 				switch (mainMenuSelection) {
 				// Add Pet
 				case "1":
 					System.out.println("What would you like to name the new pet?");
-					String name = input.nextLine();
-					VirtualPet pet = new VirtualPet(name, 5, 8, 3, 8, 24);
-					petShelter.addVirtualPet(pet);
-					System.out.println("Here's your new pet, " + pet.getName() + "!");
+					String newPetName = input.nextLine();
+					VirtualPet petToAdd = new VirtualPet(newPetName, 5, 8, 3, 8, 24);
+					petShelter.addVirtualPet(petToAdd);
+					System.out.println("Here's your new pet, " + petToAdd.getName() + "!");
 					System.out
-							.println("If you don't keep " + pet.getName() + " happy, " + pet.getName() + " will die!");
-					System.out.println("Keep " + pet.getName()
+							.println("If you don't keep " + petToAdd.getName() + " happy, " + petToAdd.getName() + " will die!");
+					System.out.println("Keep " + petToAdd.getName()
 							+ " happy by feeding it, playing with it, walking it, and hugging it.");
 					break;
+					
 				// Remove Pet
 				case "2":
 					System.out.println("Which pet is going to a new home?");
 					petShelter.getPetNames();
-					String toBeRemoved = input.nextLine().toLowerCase();
-					petShelter.removeVirtualPet(petShelter.findVirtualPet(toBeRemoved));
-					System.out.println(toBeRemoved + "has been removed!");
-
+					String petName = input.nextLine();
+					VirtualPet petToRemove = petShelter.findVirtualPet(petName);
+					petShelter.removeVirtualPet(petToRemove);
+					System.out.println("Yay! You have successfully found a new forever home for " + petToRemove.getName() + "!");
 					break;
-
+					
+				// Get status of all pets
+				case "3":
+					System.out.println("Here are all of the pets in the shelter:");
+					petShelter.getShelterStatus();
+					break;
+					
+				// Interact with all pets
+				case "4":
+					System.out.println("What would you like to do?");
+					System.out.println("1. Feed all of the pets.");
+					System.out.println("2. Play with all of the pets.");
+					System.out.println("3. Walk all of the pets.");
+					System.out.println("4. Hug all of the pets.");
+					String shelterMenuSelection = input.nextLine();
+					
+					switch (shelterMenuSelection) {
+					
+					// Feed all pets
+					case "1":
+						petShelter.feedAllPets();
+						System.out.println("All of the pets have been fed.");
+					break;
+					
+					// Play with all pets
+					case "2":
+						petShelter.playWithAllPets();
+						System.out.println("All of the pets got to play!");
+					break;
+					
+					// Walk all of the pets
+					case "3":
+						petShelter.walkAllPets();
+						System.out.println("All of the pets did their business.");
+					break;
+					
+					// Hug all of the pets
+					case "4":
+						petShelter.hugAllPets();
+						System.out.println("All of the pets have been hugged and feel so loved!");
+					break;
+					}
+					
 				// Interact with one pet
 				case "5":
 					System.out.println("Which pet do you want to interact with?");
@@ -83,7 +129,7 @@ public class Application {
 						String petMenuSelection = input.nextLine().toLowerCase();
 
 						switch (petMenuSelection) {
-
+// Feed one pet
 						case "1":
 							if (petChoice.getHunger() <= 0) {
 								System.out.println(petChoice.getName()
@@ -94,7 +140,7 @@ public class Application {
 							}
 
 							break;
-
+// Play with one pet
 						case "2":
 							if (petChoice.getBoredom() <= 0) {
 								System.out.println(
@@ -105,7 +151,7 @@ public class Application {
 							}
 
 							break;
-
+// Walk one pet
 						case "3":
 							if (petChoice.getBladder() <= 0) {
 								System.out.println(
@@ -117,7 +163,7 @@ public class Application {
 							}
 							
 							break;
-							
+// Hug one pet							
 						case "4":
 							if (petChoice.getLoneliness() <= 0) {
 								System.out.println(petChoice.getName()
@@ -128,12 +174,12 @@ public class Application {
 							}
 							
 							break;
-							
+	// Return to main menu				
 						case "exit":
 							petMenu = false;
 							System.out.println(petChoice.getName() + " had a lot of fun! Bye!");
 							break;
-	
+	// Measure mortality
 						} 
 						if(petChoice.getHappiness() > 32) {
 							petMenu = false;
@@ -153,39 +199,3 @@ public class Application {
 //						pet.tick();
 //						if (pet.getHappiness() >= 32) {
 //							
-//							System.exit(0); // Need a way to get it back to the initial menu
-//							repeatMenu = false;
-//						} else {
-//							System.out.println("1. Feed " + pet.getName());
-//							System.out.println("2. Play with " + pet.getName());
-//							System.out.println("3. Walk " + pet.getName());
-//							System.out.println("4. Hug " + pet.getName());
-//							System.out.println("You can Save and Exit at any time by saying \"Exit\"");
-//
-//							String menuSelection = input.nextLine();
-//
-//							if (menuSelection.toLowerCase().equals("exit")) {
-//								System.out.println("Are you sure you want to exit?");
-//								System.out.println("1. Yes");
-//								System.out.println("2. No");
-//								String exitAnswer = input.nextLine();
-//								if (exitAnswer.toLowerCase().equals("yes") || exitAnswer.toLowerCase().equals("1")) {
-//									System.exit(0);
-//									repeatMenu = false;
-//								} else if (exitAnswer.toLowerCase().equals("no")
-//										|| exitAnswer.toLowerCase().equals("2")) {
-//									System.out.println("What would you like to do?");
-//									repeatMenu = true;
-//								}
-//
-//							} else if (
-//							
-//							
-//							} else if (menuSelection.toLowerCase().equals("hug")
-//									|| menuSelection.toLowerCase().equals("4")) {
-//								
-//							} else {
-//								System.out.println("Please make a valid menu selection:");
-//							}
-//
-//						}
