@@ -8,12 +8,12 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldBeAbleToCreatePet() {
-		VirtualPet pet = new VirtualPet(null, 0, 0, 0, 0, 0);
+		VirtualPet pet = new VirtualPet(null);
 	}
 
 	@Test
 	public void petShouldHaveName() {
-		VirtualPet underTest = new VirtualPet("Jeff", 0, 0, 0, 0, 0);
+		VirtualPet underTest = new VirtualPet("Jeff");
 
 		String actual = underTest.getName();
 
@@ -22,7 +22,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveDefaultHunger() {
-		VirtualPet underTest = new VirtualPet("Steve", 10, 0, 0, 0, 0);
+		VirtualPet underTest = new VirtualPet("Steve");
 
 		int actual = underTest.getHunger();
 
@@ -32,7 +32,7 @@ public class VirtualPetTest {
 	// Tick test example
 	@Test
 	public void shouldTick() {
-		VirtualPet pet = new VirtualPet("Kendrick", 0, 0, 0, 0, 0);
+		VirtualPet pet = new VirtualPet("Kendrick");
 
 		pet.tick();
 
@@ -41,7 +41,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldFeed() {
-		VirtualPet pet = new VirtualPet("Kendrick", 10, 0, 0, 0, 0);
+		VirtualPet pet = new VirtualPet("Kendrick");
 
 		pet.feed();
 
@@ -51,7 +51,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldPlay() {
-		VirtualPet pet = new VirtualPet("Kendrick", 0, 10, 0, 0, 0);
+		VirtualPet pet = new VirtualPet("Kendrick");
 
 		pet.play();
 
@@ -61,7 +61,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldWalk() {
-		VirtualPet pet = new VirtualPet("Kendrick", 0, 0, 10, 0, 0);
+		VirtualPet pet = new VirtualPet("Kendrick");
 
 		pet.walk();
 
@@ -71,7 +71,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHug() {
-		VirtualPet pet = new VirtualPet("Kendrick", 0, 0, 0, 10, 0);
+		VirtualPet pet = new VirtualPet("Kendrick");
 
 		pet.hug();
 
@@ -81,7 +81,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void happinessCheck() {
-		VirtualPet pet = new VirtualPet("Kendrick", 0, 0, 0, 0, 10);
+		VirtualPet pet = new VirtualPet("Kendrick");
 
 		pet.feed();
 		pet.play();

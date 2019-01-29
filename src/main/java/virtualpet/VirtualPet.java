@@ -1,8 +1,12 @@
 package virtualpet;
 
+import java.util.Random;
+
 public class VirtualPet {
 
 	// Properties
+	Random rng = new Random();
+	
 	private String name;
 	private int hunger;
 	private int boredom;
@@ -11,13 +15,13 @@ public class VirtualPet {
 	private int happiness;
 
 	// Constructor
-	public VirtualPet(String name, int hunger, int boredom, int bladder, int loneliness, int happiness) {
+	public VirtualPet(String name) {
 		this.name = name;
-		this.hunger = hunger;
-		this.boredom = boredom;
-		this.bladder = bladder;
-		this.loneliness = loneliness;
-		this.happiness = happiness;
+		this.hunger = rng.nextInt(10) + 1;
+		this.boredom = rng.nextInt(10) + 1;
+		this.bladder = rng.nextInt(10) + 1;
+		this.loneliness = rng.nextInt(10) + 1;
+		this.happiness = hunger + boredom + bladder + loneliness;
 	} // Random generator goes here!
 
 	// Accessor Methods

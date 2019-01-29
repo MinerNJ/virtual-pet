@@ -9,7 +9,7 @@ public class PetShelterTest {
 	public void shouldBeAbleToAddPet() {
 		//Arrange
 		PetShelter underTest = new PetShelter();
-		VirtualPet pet = new VirtualPet(null, 0, 0, 0, 0, 0);
+		VirtualPet pet = new VirtualPet(null);
 		
 		//Act
 		int initialPets = underTest.getShelterSize();
@@ -24,7 +24,7 @@ public class PetShelterTest {
 	@Test
 	public void shouldRemovePet() {
 		PetShelter underTest = new PetShelter();
-		VirtualPet pet = new VirtualPet(null, 0, 0, 0, 0, 0);
+		VirtualPet pet = new VirtualPet(null);
 		underTest.addVirtualPet(pet); //adding pet for testing purposes
 		
 		int initialPets = underTest.getShelterSize();
@@ -37,7 +37,7 @@ public class PetShelterTest {
 	@Test
 	public void shouldFindPet() {
 		PetShelter underTest = new PetShelter();
-		VirtualPet buddy = new VirtualPet("Buddy", 0, 0, 0, 0, 0);
+		VirtualPet buddy = new VirtualPet("Buddy");
 		
 		underTest.addVirtualPet(buddy);
 		VirtualPet foundPet = underTest.findVirtualPet("Buddy");
@@ -48,9 +48,9 @@ public class PetShelterTest {
 	@Test
 	public void shouldFeedAllPets() {
 		PetShelter underTest = new PetShelter();
-		VirtualPet buddy = new VirtualPet("Buddy", 5, 0, 0, 0, 5);
-		VirtualPet ralph = new VirtualPet("Ralph", 5, 0, 0, 0, 5);
-		VirtualPet george = new VirtualPet("George", 5, 0, 0, 0, 5);
+		VirtualPet buddy = new VirtualPet("Buddy");
+		VirtualPet ralph = new VirtualPet("Ralph");
+		VirtualPet george = new VirtualPet("George");
 		 
 		underTest.addVirtualPet(buddy);
 		underTest.addVirtualPet(ralph);
@@ -67,9 +67,9 @@ public class PetShelterTest {
 	@Test
 	public void shouldPlayWithAllPets() {
 		PetShelter underTest = new PetShelter();
-		VirtualPet buddy = new VirtualPet("Buddy", 0, 5, 0, 0, 5);
-		VirtualPet ralph = new VirtualPet("Ralplh", 0, 5, 0, 0, 5);
-		VirtualPet george = new VirtualPet("George", 0, 5, 0, 0, 5);
+		VirtualPet buddy = new VirtualPet("Buddy");
+		VirtualPet ralph = new VirtualPet("Ralplh");
+		VirtualPet george = new VirtualPet("George");
 		
 		underTest.addVirtualPet(buddy);
 		underTest.addVirtualPet(ralph);
