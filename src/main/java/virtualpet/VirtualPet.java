@@ -6,7 +6,7 @@ public class VirtualPet {
 
 	// Properties
 	Random rng = new Random();
-	
+
 	private String name;
 	private int hunger;
 	private int boredom;
@@ -77,6 +77,7 @@ public class VirtualPet {
 	}
 
 	public void checkStatus() {
+		happiness = hunger + boredom + bladder + loneliness;
 		System.out.println(name + " has a hunger of " + hunger + ", a boredom of " + boredom + ", a bladder of "
 				+ bladder + ", a loneliness of " + loneliness + ", and a happiness of " + happiness + ".");
 	} // Return a string that contains the status
