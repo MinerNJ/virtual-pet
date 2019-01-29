@@ -9,18 +9,18 @@ public class VirtualPet {
 
 	private String name;
 	private int hunger;
-	private int boredom;
+	public int boredom;
 	private int bladder;
-	private int loneliness;
+	public int loneliness;
 	private int happiness;
 
 	// Constructor
 	public VirtualPet(String name) {
 		this.name = name;
-		this.hunger = rng.nextInt(10) + 1;
-		this.boredom = rng.nextInt(10) + 1;
-		this.bladder = rng.nextInt(10) + 1;
-		this.loneliness = rng.nextInt(10) + 1;
+		this.hunger = rng.nextInt(25) + 1;
+		this.boredom = rng.nextInt(25) + 1;
+		this.bladder = rng.nextInt(25) + 1;
+		this.loneliness = rng.nextInt(25) + 1;
 		this.happiness = hunger + boredom + bladder + loneliness;
 	} // Random generator goes here!
 

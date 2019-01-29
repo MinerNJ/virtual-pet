@@ -1,9 +1,18 @@
 package virtualpet;
 
 public class RoboticPet extends VirtualPet {
-
-	public RoboticPet(String name, int hunger, int boredom, int bladder, int loneliness) {
-		super(name, hunger, boredom, bladder, loneliness);
+	
+	// Subclass properties
+	private int batteryLife;
+	private int oilGauge;
+	private int maintenance;
+	
+	// Subclass Constructor
+	public RoboticPet(String name) {
+		super(name);
+		this.batteryLife = 0;
+		this.oilGauge = 0;
+		this.maintenance = batteryLife + boredom + oilGauge + loneliness;
 
 	}
 
