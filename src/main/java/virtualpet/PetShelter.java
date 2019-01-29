@@ -18,6 +18,7 @@ public class PetShelter {
 	public void removeVirtualPet(VirtualPet pet) {
 		virtualPets.remove(pet.getName(), pet);
 	}
+
 // Getter
 	public HashMap<String, VirtualPet> getVirtualPets() {
 		return virtualPets;
