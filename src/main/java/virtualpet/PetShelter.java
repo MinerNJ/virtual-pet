@@ -35,11 +35,15 @@ public class PetShelter {
 		}
 	}
 
-	// get status of all pets
+	// Get status of all pets
 	public void getShelterStatus() {
-		Collection<VirtualPet> virtualPets = getVirtualPets().values();
-		for (VirtualPet pet : virtualPets) {
-			pet.checkStatus();
+		for (VirtualPet pet : virtualPets.values()) {
+
+			if (pet instanceof OrganicPet) {
+				((OrganicPet) pet).checkStatus();
+			} else if (pet instanceof RoboticPet) {
+				((RoboticPet) pet).checkPerformanceLevel();
+			}
 		}
 	}
 

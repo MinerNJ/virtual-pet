@@ -10,8 +10,8 @@ public class PetShelterTest {
 		// Arrange
 		PetShelter underTest = new PetShelter();
 		VirtualPet pet = new VirtualPet(null);
-		
-		//Act
+
+		// Act
 
 		int initialPets = underTest.getShelterSize();
 		underTest.addVirtualPet(pet); // Add virtual pet to PetShelter instance
@@ -25,8 +25,8 @@ public class PetShelterTest {
 	public void shouldRemovePet() {
 		PetShelter underTest = new PetShelter();
 		VirtualPet pet = new VirtualPet(null);
-		underTest.addVirtualPet(pet); //adding pet for testing purposes
-		
+		underTest.addVirtualPet(pet); // adding pet for testing purposes
+
 		int initialPets = underTest.getShelterSize();
 		underTest.removeVirtualPet(pet);
 		int petsAfterRemoval = underTest.getShelterSize();
@@ -39,7 +39,7 @@ public class PetShelterTest {
 		PetShelter underTest = new PetShelter();
 
 		VirtualPet buddy = new VirtualPet("Buddy");
-		
+
 		underTest.addVirtualPet(buddy);
 		VirtualPet foundPet = underTest.findVirtualPet("Buddy");
 
@@ -53,7 +53,6 @@ public class PetShelterTest {
 		VirtualPet buddy = new VirtualPet("Buddy");
 		VirtualPet ralph = new VirtualPet("Ralph");
 		VirtualPet george = new VirtualPet("George");
-		 
 
 		underTest.addVirtualPet(buddy);
 		underTest.addVirtualPet(ralph);
@@ -73,7 +72,7 @@ public class PetShelterTest {
 		VirtualPet buddy = new VirtualPet("Buddy");
 		VirtualPet ralph = new VirtualPet("Ralph");
 		VirtualPet george = new VirtualPet("George");
-		
+
 		underTest.addVirtualPet(buddy);
 		underTest.addVirtualPet(ralph);
 		underTest.addVirtualPet(george);
@@ -84,4 +83,19 @@ public class PetShelterTest {
 
 		Assert.assertEquals(beforePlaying - 6, afterPlaying);
 	}
+
+	@Test
+	public void testPrint() {
+		PetShelter underTest = new PetShelter();
+		VirtualPet buddy = new OrganicPet("Buddy");
+		VirtualPet ralph = new RoboticPet("Ralph");
+		VirtualPet george = new OrganicPet("George");
+
+		underTest.addVirtualPet(buddy);
+		underTest.addVirtualPet(ralph);
+		underTest.addVirtualPet(george);
+
+		underTest.getShelterStatus();
+	}
+
 }
