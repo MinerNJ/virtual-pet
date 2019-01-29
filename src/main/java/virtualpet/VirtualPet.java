@@ -46,6 +46,7 @@ public class VirtualPet {
 	}
 
 	public int getHappiness() {
+		happiness = hunger + boredom + bladder + loneliness;
 		return happiness;
 	}
 
@@ -61,27 +62,23 @@ public class VirtualPet {
 
 	public void feed() {
 		hunger -= 2;
-		happiness -= 2;
 	}
 
 	public void play() {
 		boredom -= 2;
-		happiness -= 2;
 	}
 
 	public void walk() {
 		bladder -= 2;
-		happiness -= 2;
 	}
 
 	public void hug() {
 		loneliness -= 2;
-		happiness -= 2;
 	}
-	
+
 	public void checkStatus() {
-		System.out.println(name + " has a hunger of " + hunger + ", a boredom of " + boredom + ", a bladder of " + bladder
-				+ ", a loneliness of " + loneliness + ", and a happiness of " + happiness + ".");
+		System.out.println(name + " has a hunger of " + hunger + ", a boredom of " + boredom + ", a bladder of "
+				+ bladder + ", a loneliness of " + loneliness + ", and a happiness of " + happiness + ".");
 	} // Return a string that contains the status
 
 }

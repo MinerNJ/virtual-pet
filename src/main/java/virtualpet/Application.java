@@ -30,8 +30,10 @@ public class Application {
 			if (!mainMenuSelection.equalsIgnoreCase("1") && petShelter.getShelterSize() < 1) {
 				System.out.println("You need to admit a new pet to your shelter first.");
 				System.out.println("What would you like to name the new pet?");
+				
 				String name = input.nextLine();
 				VirtualPet pet = new VirtualPet(name);
+
 				petShelter.addVirtualPet(pet);
 				System.out.println("Here's your new pet, " + pet.getName() + "!");
 				System.out.println("If you don't keep " + pet.getName() + " happy," + pet.getName() + " will die!");
@@ -45,8 +47,10 @@ public class Application {
 				// Add Pet
 				case "1":
 					System.out.println("What would you like to name the new pet?");
+					
 					String newPetName = input.nextLine();
 					VirtualPet petToAdd = new VirtualPet(newPetName);
+
 					petShelter.addVirtualPet(petToAdd);
 					System.out.println("Here's your new pet, " + petToAdd.getName() + "!");
 					System.out.println(

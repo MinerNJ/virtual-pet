@@ -1,6 +1,7 @@
 package virtualpet;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -9,11 +10,13 @@ public class VirtualPetTest {
 	@Test
 	public void shouldBeAbleToCreatePet() {
 		VirtualPet pet = new VirtualPet(null);
+
 	}
 
 	@Test
 	public void petShouldHaveName() {
 		VirtualPet underTest = new VirtualPet("Jeff");
+
 
 		String actual = underTest.getName();
 
@@ -26,7 +29,7 @@ public class VirtualPetTest {
 
 		int actual = underTest.getHunger();
 
-		assertEquals(10, actual);
+		assertTrue(actual > 0);
 	}
 
 	// Tick test example
@@ -34,18 +37,22 @@ public class VirtualPetTest {
 	public void shouldTick() {
 		VirtualPet pet = new VirtualPet("Kendrick");
 
+		int beforeAction = pet.getHunger();
 		pet.tick();
+		int afterAction = pet.getHunger();
 
-		assertEquals(1, pet.getHunger());
+		assertEquals(beforeAction + 1, afterAction);
 	}
 
 	@Test
 	public void shouldFeed() {
 		VirtualPet pet = new VirtualPet("Kendrick");
-
+		
+		int beforeAction = pet.getHunger();
 		pet.feed();
+		int afterAction = pet.getHunger();
 
-		assertEquals(8, pet.getHunger());
+		assertEquals(beforeAction - 2, afterAction);
 
 	}
 
@@ -53,19 +60,24 @@ public class VirtualPetTest {
 	public void shouldPlay() {
 		VirtualPet pet = new VirtualPet("Kendrick");
 
+		int beforeAction = pet.getBoredom();
 		pet.play();
+		int afterAction = pet.getBoredom();
 
-		assertEquals(8, pet.getBoredom());
+		assertEquals(beforeAction - 2, afterAction);
 
 	}
 
 	@Test
 	public void shouldWalk() {
+		
 		VirtualPet pet = new VirtualPet("Kendrick");
 
+		int beforeAction = pet.getBladder();
 		pet.walk();
+		int afterAction = pet.getBladder();
 
-		assertEquals(8, pet.getBladder());
+		assertEquals(beforeAction - 2, afterAction);
 
 	}
 
@@ -73,25 +85,28 @@ public class VirtualPetTest {
 	public void shouldHug() {
 		VirtualPet pet = new VirtualPet("Kendrick");
 
+		int beforeAction = pet.getLoneliness();
 		pet.hug();
+		int afterAction = pet.getLoneliness();
 
-		assertEquals(8, pet.getLoneliness());
+		assertEquals(beforeAction - 2, afterAction);
 
 	}
 
 	@Test
 	public void happinessCheck() {
 		VirtualPet pet = new VirtualPet("Kendrick");
-
+		
+		int beforeAction = pet.getHappiness();
+		
 		pet.feed();
 		pet.play();
 		pet.walk();
 		pet.hug();
+		
+		int afterAction = pet.getHappiness();
 
-		assertEquals(2, pet.getHappiness());
+		assertEquals(beforeAction - 8, afterAction);
 	}
-	
-	
 
-	
 }
