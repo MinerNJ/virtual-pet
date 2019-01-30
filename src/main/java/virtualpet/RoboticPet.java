@@ -29,6 +29,14 @@ public class RoboticPet extends VirtualPet {
 		return maintenance;
 	}
 
+	// time method
+			public void tick() {
+				batteryLife += 1;
+				oilGauge += 1;
+				maintenance += 2;
+			}
+		// Test a counter "clock", after so many "turns" all properties change
+
 // Action methods
 	public void charge() {
 		batteryLife = 0; // Fully charge!
@@ -40,9 +48,9 @@ public class RoboticPet extends VirtualPet {
 
 	public void checkPerformanceLevel() {
 		maintenance = batteryLife + getBoredom() + oilGauge + getLoneliness();
-		System.out.println(getName() + "'s battery has been depleted by " + batteryLife + ", it has a boredom level of "
+		System.out.println(getName() + "'s battery has been depleted by " + batteryLife + ", has a boredom of "
 				+ getBoredom() + ", has burned " + oilGauge + " units of oil, has a loneliness of " + getLoneliness()
-				+ ", and a performance level of " + maintenance + ".");
+				+ ", and a performance of " + maintenance + ".");
 	}
 
 }

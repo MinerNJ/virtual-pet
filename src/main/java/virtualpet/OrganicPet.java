@@ -31,16 +31,14 @@ public class OrganicPet extends VirtualPet {
 		happiness = hunger + getBoredom() + bladder + getLoneliness();
 		return happiness;
 	}
+	
 
-//		// time method
-//		public void tick() {
-//			int time = 1;
-//			hunger += time;
-//			boredom += time;
-//			bladder += time;
-//			loneliness += time;
-//			happiness += 2;
-//		}
+		// time method
+		public void tick() {
+			hunger += 1;
+			bladder += 1;
+			happiness += 2;
+		}
 	// Test a counter "clock", after so many "turns" all properties change
 
 	public void feed() {
@@ -53,8 +51,7 @@ public class OrganicPet extends VirtualPet {
 
 	public void checkStatus() {
 		happiness = hunger + getBoredom() + bladder + getLoneliness();
-		System.out
-				.println(getName() + " has a hunger of " + hunger + ", a boredom of " + getBoredom() + ", a bladder of "
+		System.out.println(getName() + " has a hunger of " + hunger + ", a boredom of " + getBoredom() + ", a bladder of "
 						+ bladder + ", a loneliness of " + getLoneliness() + ", and a happiness of " + happiness + ".");
 	} // Return a string that contains the status
 

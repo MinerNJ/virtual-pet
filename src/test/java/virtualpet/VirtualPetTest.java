@@ -25,18 +25,6 @@ public class VirtualPetTest {
 		assertTrue(actual > 0);
 	}
 
-//	// Tick test:
-//	@Test
-//	public void shouldTick() {
-//		VirtualPet pet = new VirtualPet("Kendrick");
-//
-//		int beforeAction = pet.getHunger();
-//		pet.tick();
-//		int afterAction = pet.getHunger();
-//
-//		assertEquals(beforeAction + 1, afterAction);
-//	}
-
 	@Test
 	public void shouldPlay() {
 		VirtualPet pet = new VirtualPet("Kendrick");
@@ -58,6 +46,23 @@ public class VirtualPetTest {
 		int afterAction = pet.getLoneliness();
 
 		assertEquals(beforeAction - 2, afterAction);
+
+	}
+	
+	@Test
+	public void tickCheck() {
+		VirtualPet underTest = new VirtualPet(null);
+		
+		int a = underTest.getBoredom();
+		int b = underTest.getLoneliness();
+		
+		underTest.tick();
+		
+		int c = underTest.getBoredom();
+		int d = underTest.getLoneliness();
+		
+		assertEquals(a + 1, c);
+		assertEquals(b + 1, d);
 
 	}
 
