@@ -52,7 +52,7 @@ public class OrganicPet extends VirtualPet {
 	public void checkStatus() {
 		happiness = hunger + getBoredom() + bladder + getLoneliness();
 		System.out
-				.println(getName() + " has a hunger of " + hunger + ", a boredom of " + getBoredom() + ", a bladder of "
+				.print(getName() + " has a hunger of " + hunger + ", a boredom of " + getBoredom() + ", a bladder of "
 						+ bladder + ", a loneliness of " + getLoneliness() + ", and a happiness of " + happiness + ".");
 	} // Return a string that contains the status
 
