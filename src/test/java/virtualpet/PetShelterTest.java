@@ -9,7 +9,7 @@ public class PetShelterTest {
 	public void shouldBeAbleToAddPet() {
 		// Arrange
 		PetShelter underTest = new PetShelter();
-		VirtualPet pet = new VirtualPet(null);
+		VirtualPet pet = new OrganicPet(null);
 
 		// Act
 
@@ -20,7 +20,7 @@ public class PetShelterTest {
 		// Assert
 		Assert.assertEquals(initialPets + 1, petsAfterAddition);
 	}
-	
+
 	@Test
 	public void shouldBeAbleToAddOrganicPet() {
 		// Arrange
@@ -52,11 +52,11 @@ public class PetShelterTest {
 		// Assert
 		Assert.assertEquals(initialPets + 1, petsAfterAddition);
 	}
-	
+
 	@Test
 	public void shouldRemovePet() {
 		PetShelter underTest = new PetShelter();
-		VirtualPet pet = new VirtualPet(null);
+		VirtualPet pet = new OrganicPet(null);
 		underTest.addVirtualPet(pet); // adding pet for testing purposes
 
 		int initialPets = underTest.getShelterSize();
@@ -66,25 +66,11 @@ public class PetShelterTest {
 		Assert.assertEquals(initialPets - 1, petsAfterRemoval);
 	}
 
-//	@Test
-//	public void testPrint() {
-//		PetShelter underTest = new PetShelter();
-//		VirtualPet buddy = new OrganicPet("Buddy");
-//		VirtualPet ralph = new RoboticPet("Ralph");
-//		VirtualPet george = new OrganicPet("George");
-//
-//		underTest.addVirtualPet(buddy);
-//		underTest.addVirtualPet(ralph);
-//		underTest.addVirtualPet(george);
-//
-//		underTest.getShelterStatus();
-//	}
-	
 	@Test
 	public void shouldFindPet() {
 		PetShelter underTest = new PetShelter();
 
-		VirtualPet buddy = new VirtualPet("Buddy");
+		VirtualPet buddy = new OrganicPet("Buddy");
 
 		underTest.addVirtualPet(buddy);
 		VirtualPet foundPet = underTest.findVirtualPet("Buddy");
@@ -92,8 +78,6 @@ public class PetShelterTest {
 		Assert.assertEquals("Buddy", foundPet.getName());
 	}
 
-	
-	
 	@Test
 	public void shouldFeedAllPets() {
 		PetShelter underTest = new PetShelter();
@@ -115,7 +99,7 @@ public class PetShelterTest {
 
 	private void checkPetReal() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Test
@@ -135,7 +119,7 @@ public class PetShelterTest {
 
 		Assert.assertEquals(beforePlaying - 6, afterPlaying);
 	}
-	
+
 	@Test
 	public void shouldWalkAllPets() {
 		PetShelter underTest = new PetShelter();
@@ -153,7 +137,7 @@ public class PetShelterTest {
 
 		Assert.assertEquals(beforeWalk - 4, afterWalk);
 	}
-	
+
 	@Test
 	public void shouldHugAllPets() {
 		PetShelter underTest = new PetShelter();
@@ -172,8 +156,23 @@ public class PetShelterTest {
 		Assert.assertEquals(beforeHug - 6, afterHug);
 	}
 
-	
+	@Test
+	public void shouldGetDirty() {
+		PetShelter underTest = new PetShelter();
+		int shelterBeforeTick = underTest.getCleanliness();
+		underTest.dirtyShelter(5);
+		int shelterAfterTick = underTest.getCleanliness();
+		Assert.assertEquals(shelterBeforeTick - 5, shelterAfterTick);
+	}
 
-	
-	
+	@Test
+	public void shouldGetClean() {
+		PetShelter underTest = new PetShelter();
+		underTest.dirtyShelter(15);
+		underTest.cleanShelter();
+		int shelterAfterCleaning = underTest.getCleanliness();
+		Assert.assertEquals(100, shelterAfterCleaning);
+
+	}
+
 }

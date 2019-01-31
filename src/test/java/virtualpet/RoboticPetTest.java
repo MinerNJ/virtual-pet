@@ -52,14 +52,14 @@ public class RoboticPetTest {
 	public void happinessCheck() {
 		RoboticPet underTest = new RoboticPet("Jeff");
 
-		int beforeAction = underTest.getMaintenance();
+		int beforeAction = underTest.getPerformance();
 
 		underTest.charge();
 		underTest.play();
 		underTest.oilChange();
 		underTest.hug();
 
-		int afterAction = underTest.getMaintenance();
+		int afterAction = underTest.getPerformance();
 
 		assertEquals(beforeAction + 4, afterAction);
 	}
@@ -69,19 +69,24 @@ public class RoboticPetTest {
 		RoboticPet underTest = new RoboticPet(null);
 
 		int a = underTest.getBatteryLife();
-		int b = underTest.getOilGauge();
-		int c = underTest.getMaintenance();
+		int b = underTest.getBoredom();
+		int c = underTest.getOilGauge();
+		int d = underTest.getLoneliness();
+		int e = underTest.getPerformance();
 
 		underTest.tick(5);
 
-		int d = underTest.getBatteryLife();
-		int e = underTest.getBatteryLife();
-		int f = underTest.getMaintenance();
+		int a2 = underTest.getBatteryLife();
+		int b2 = underTest.getBoredom();
+		int c2 = underTest.getOilGauge();
+		int d2 = underTest.getLoneliness();
+		int e2 = underTest.getPerformance();
 
-		assertEquals(a + 1, d);
-		assertEquals(b + 1, e);
-		assertEquals(c - 2, f);
-
+		assertEquals(a + 1, a2);
+		assertEquals(b + 1, b2);
+		assertEquals(c + 1, c2);
+		assertEquals(d + 1, d2);
+		assertEquals(e - 4, e2);
 	}
 
 }

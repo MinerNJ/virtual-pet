@@ -7,7 +7,7 @@ public class OrganicPet extends VirtualPet {
 	// Properties
 	private int hunger;
 	private int bladder;
-	private int happiness;
+	private int health;
 
 	// Constructor
 	public OrganicPet(String name) {
@@ -15,7 +15,7 @@ public class OrganicPet extends VirtualPet {
 		Random rng = new Random();
 		this.hunger = rng.nextInt(10) + 6;
 		this.bladder = rng.nextInt(10) + 6;
-		this.happiness = hunger + getBoredom() + bladder + getLoneliness();
+		this.health = hunger + getBoredom() + bladder + getLoneliness();
 	}
 
 	// Accessor Methods
@@ -27,14 +27,15 @@ public class OrganicPet extends VirtualPet {
 		return bladder;
 	}
 
-	public int getHappiness() {
-		happiness = 100 - (hunger + getBoredom() + bladder + getLoneliness());
-		return happiness;
+	public int getHealth() {
+		health = 100 - (hunger + getBoredom() + bladder + getLoneliness());
+		return health;
 	}
 
 	// time method
 	public void tick(int turnCount) {
 		if (turnCount % 5 == 0) {
+			this.allTick();
 			hunger += 1;
 			bladder += 1;
 		}
@@ -52,13 +53,6 @@ public class OrganicPet extends VirtualPet {
 		if (bladder < 0) {
 			bladder = 0;
 		}
-	}
-
-	public void checkStatus() {
-		happiness = hunger + getBoredom() + bladder + getLoneliness();
-		System.out.println(getName() + " has a hunger of " + hunger + ", a boredom of " + getBoredom()
-				+ ", a bladder of " + bladder + ", a loneliness of " + getLoneliness() + ", and a happiness of "
-				+ this.getHappiness() + " out of 100.");
 	}
 
 }

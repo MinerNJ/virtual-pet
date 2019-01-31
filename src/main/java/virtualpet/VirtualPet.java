@@ -2,7 +2,7 @@ package virtualpet;
 
 import java.util.Random;
 
-public class VirtualPet {
+public abstract class VirtualPet {
 
 	// Properties
 	private String name;
@@ -31,11 +31,9 @@ public class VirtualPet {
 	}
 
 	// time method
-	public void allTick(int turnCount) {
-		if (turnCount % 5 == 0) {
-			boredom += 1;
-			loneliness += 1;
-		}
+	public void allTick() {
+		boredom += 1;
+		loneliness += 1;
 	}
 
 	public void play() {

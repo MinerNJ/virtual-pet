@@ -9,7 +9,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void petShouldHaveName() {
-		VirtualPet underTest = new VirtualPet("Jeff");
+		VirtualPet underTest = new OrganicPet("Jeff");
 
 		String actual = underTest.getName();
 
@@ -18,7 +18,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveDefaultBoredom() {
-		VirtualPet underTest = new VirtualPet("Steve");
+		VirtualPet underTest = new OrganicPet("Steve");
 
 		int actual = underTest.getBoredom();
 
@@ -27,7 +27,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldPlay() {
-		VirtualPet pet = new VirtualPet("Kendrick");
+		VirtualPet pet = new OrganicPet("Kendrick");
 
 		int beforeAction = pet.getBoredom();
 		pet.play();
@@ -39,7 +39,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHug() {
-		VirtualPet pet = new VirtualPet("Kendrick");
+		VirtualPet pet = new OrganicPet("Kendrick");
 
 		int beforeAction = pet.getLoneliness();
 		pet.hug();
@@ -48,19 +48,19 @@ public class VirtualPetTest {
 		assertEquals(beforeAction - 2, afterAction);
 
 	}
-	
+
 	@Test
 	public void tickCheck() {
-		VirtualPet underTest = new VirtualPet(null);
-		
+		VirtualPet underTest = new OrganicPet(null);
+
 		int a = underTest.getBoredom();
 		int b = underTest.getLoneliness();
-		
-		underTest.allTick(5);
-		
+
+		underTest.allTick();
+
 		int c = underTest.getBoredom();
 		int d = underTest.getLoneliness();
-		
+
 		assertEquals(a + 1, c);
 		assertEquals(b + 1, d);
 
