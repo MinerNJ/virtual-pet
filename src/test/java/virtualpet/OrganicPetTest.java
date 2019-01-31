@@ -25,18 +25,6 @@ public class OrganicPetTest {
 		assertTrue(actual > 0);
 	}
 
-//	// Tick test:
-//	@Test
-//	public void shouldTick() {
-//		OrganicPet underTest = new OrganicPet("Jeff");
-//
-//		int beforeAction = pet.getHunger();
-//		pet.tick();
-//		int afterAction = pet.getHunger();
-//
-//		assertEquals(beforeAction + 1, afterAction);
-//	}
-
 	@Test
 	public void shouldFeed() {
 		OrganicPet underTest = new OrganicPet("Jeff");
@@ -74,26 +62,26 @@ public class OrganicPetTest {
 
 		int afterAction = underTest.getHappiness();
 
-		assertEquals(beforeAction - 8, afterAction);
+		assertEquals(beforeAction + 8, afterAction);
 	}
-	
+
 	@Test
 	public void tickCheck() {
 		OrganicPet underTest = new OrganicPet(null);
-		
+
 		int a = underTest.getBladder();
 		int b = underTest.getHunger();
 		int c = underTest.getHappiness();
-		
+
 		underTest.tick(5);
-		
+
 		int d = underTest.getBladder();
 		int e = underTest.getHunger();
 		int f = underTest.getHappiness();
-		
+
 		assertEquals(a + 1, d);
 		assertEquals(b + 1, e);
-		assertEquals(c + 2, f);
+		assertEquals(c - 2, f);
 
 	}
 

@@ -13,8 +13,8 @@ public class VirtualPet {
 	public VirtualPet(String name) {
 		Random rng = new Random();
 		this.name = name;
-		this.boredom = rng.nextInt(25) + 1;
-		this.loneliness = rng.nextInt(25) + 1;
+		this.boredom = rng.nextInt(10) + 6;
+		this.loneliness = rng.nextInt(10) + 6;
 	}
 
 	// Accessor Methods
@@ -37,13 +37,18 @@ public class VirtualPet {
 			loneliness += 1;
 		}
 	}
-	// Test a counter "clock", after so many "turns" all properties change
 
 	public void play() {
 		boredom -= 2;
+		if (boredom < 0) {
+			boredom = 0;
+		}
 	}
 
 	public void hug() {
 		loneliness -= 2;
+		if (loneliness < 0) {
+			loneliness = 0;
+		}
 	}
 }

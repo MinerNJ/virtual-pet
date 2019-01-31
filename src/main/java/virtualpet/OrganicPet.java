@@ -13,8 +13,8 @@ public class OrganicPet extends VirtualPet {
 	public OrganicPet(String name) {
 		super(name);
 		Random rng = new Random();
-		this.hunger = rng.nextInt(25) + 1;
-		this.bladder = rng.nextInt(25) + 1;
+		this.hunger = rng.nextInt(10) + 6;
+		this.bladder = rng.nextInt(10) + 6;
 		this.happiness = hunger + getBoredom() + bladder + getLoneliness();
 	}
 
@@ -28,7 +28,7 @@ public class OrganicPet extends VirtualPet {
 	}
 
 	public int getHappiness() {
-		happiness = hunger + getBoredom() + bladder + getLoneliness();
+		happiness = 100 - (hunger + getBoredom() + bladder + getLoneliness());
 		return happiness;
 	}
 
@@ -39,21 +39,26 @@ public class OrganicPet extends VirtualPet {
 			bladder += 1;
 		}
 	}
-	// Test a counter "clock", after so many "turns" all properties change
 
 	public void feed() {
 		hunger -= 2;
+		if (hunger < 0) {
+			hunger = 0;
+		}
 	}
 
 	public void walk() {
 		bladder -= 2;
+		if (bladder < 0) {
+			bladder = 0;
+		}
 	}
 
 	public void checkStatus() {
 		happiness = hunger + getBoredom() + bladder + getLoneliness();
-		System.out
-				.println(getName() + " has a hunger of " + hunger + ", a boredom of " + getBoredom() + ", a bladder of "
-						+ bladder + ", a loneliness of " + getLoneliness() + ", and a happiness of " + happiness + ".");
-	} // Return a string that contains the status
+		System.out.println(getName() + " has a hunger of " + hunger + ", a boredom of " + getBoredom()
+				+ ", a bladder of " + bladder + ", a loneliness of " + getLoneliness() + ", and a happiness of "
+				+ this.getHappiness() + " out of 100.");
+	}
 
 }
