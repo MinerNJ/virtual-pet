@@ -9,12 +9,24 @@ public class Application {
 		Scanner input = new Scanner(System.in);
 
 		PetShelter petShelter = new PetShelter();
+		int counter = 0;
 // Shelter greeting
 		System.out.println("Welcome to your Virtual Pet Shelter!");
 		System.out.println("There are " + petShelter.getShelterSize() + " pets in your shelter.");
 // Shelter menu
 		boolean repeatMainMenu = true;
 		while (repeatMainMenu) {
+			
+			counter += 1; 
+			for (VirtualPet pet : petShelter.getVirtualPets().values()) {
+				pet.allTick(counter);
+				if (pet instanceof OrganicPet) {
+					((OrganicPet) pet).tick(counter);
+				} else if (pet instanceof RoboticPet) {
+					((RoboticPet) pet).tick(counter);
+				} 
+			}
+			
 			System.out.println("What would you like to do?");
 			System.out.println("1. Admit new pet");
 			System.out.println("2. Adopt out new pet");
@@ -32,13 +44,27 @@ public class Application {
 				System.out.println("What would you like to name the new pet?");
 
 				String name = input.nextLine();
-				VirtualPet pet = new VirtualPet(name);
 
-				petShelter.addVirtualPet(pet);
-				System.out.println("Here's your new pet, " + pet.getName() + "!");
-				System.out.println("If you don't keep " + pet.getName() + " happy," + pet.getName() + " will die!");
-				System.out.println(
-						"Keep " + pet.getName() + " happy by feeding it, playing with it, walking it, and hugging it.");
+				System.out.println("Great! Now, is " + name + " a real animal, or a robot animal?");
+				System.out.println("1. Real animal");
+				System.out.println("2. Robotic animal");
+
+				String petTypeSelection = input.nextLine();
+				if (petTypeSelection.equals("1")) {
+					OrganicPet pet = new OrganicPet(name);
+					petShelter.addOrganicPet(pet);
+				} else {
+					RoboticPet pet = new RoboticPet(name); // Try to add "Robo" to name here
+					petShelter.addRoboticPet(pet);
+				}
+
+//				VirtualPet pet = new VirtualPet(name);
+//
+//				petShelter.addVirtualPet(pet);
+//				System.out.println("Here's your new pet, " + pet.getName() + "!");
+//				System.out.println("If you don't keep " + pet.getName() + " happy," + pet.getName() + " will die!");
+//				System.out.println(
+//						"Keep " + pet.getName() + " happy by feeding it, playing with it, walking it, and hugging it.");
 
 // Once one pet is created, main menu loop restarts:
 			} else {
@@ -47,15 +73,23 @@ public class Application {
 				// Add Pet
 				case "1":
 					System.out.println("What would you like to name the new pet?");
-
 					String newPetName = input.nextLine();
-					VirtualPet petToAdd = new VirtualPet(newPetName);
+					System.out.println("Great! Now, is " + newPetName + " a real animal, or a robot animal?");
+					System.out.println("1. Real animal");
+					System.out.println("2. Robotic animal");
 
-					petShelter.addVirtualPet(petToAdd);
-					System.out.println("Here's your new pet, " + petToAdd.getName() + "!");
-					System.out.println(
-							"If you don't keep " + petToAdd.getName() + " happy, " + petToAdd.getName() + " will die!");
-					System.out.println("Keep " + petToAdd.getName()
+					String petTypeSelection = input.nextLine();
+					if (petTypeSelection.equals("1")) {
+						OrganicPet pet = new OrganicPet(newPetName);
+						petShelter.addOrganicPet(pet);
+					} else {
+						RoboticPet pet = new RoboticPet(newPetName); // Try to add "Robo" to name here
+						petShelter.addRoboticPet(pet);
+					}
+
+					System.out.println("Here's your new pet, " + newPetName + "!");
+					System.out.println("If you don't keep " + newPetName + " happy, " + newPetName + " will die!");
+					System.out.println("Keep " + newPetName
 							+ " happy by feeding it, playing with it, walking it, and hugging it.");
 					break;
 
@@ -145,14 +179,25 @@ public class Application {
 						switch (petMenuSelection) {
 // Feed one pet
 						case "1":
-							if (petChoice.getHunger() <= 0) {
-								System.out.println(petChoice.getName()
-										+ " says, \"No thanks, I'm full! Let's do something else.\"");
-							} else {
-								petChoice.feed();
-								System.out.println(petChoice.getName() + " says \"Thanks for feeding me! What next?\"");
-							}
+							if (petChoice instanceof OrganicPet) {
+								if (((OrganicPet) petChoice).getHunger() <= 0) {
+									System.out.println(petChoice.getName()
+											+ " says, \"No thanks, I'm full! Let's do something else.\"");
+								} else {
+									((OrganicPet) petChoice).feed();
+									System.out.println(
+											petChoice.getName() + " says \"Thanks for feeding me! What next?\"");
+								}
+							} else if (petChoice instanceof RoboticPet) {
+								if (((RoboticPet) petChoice).getBatteryLife() <= 0) {
+									System.out.println(petChoice.getName()
+											+ "says, \"No thanks, I'm fully charge! Let's do something else.\"");
+								} else {
+									((RoboticPet) petChoice).charge();
+									System.out.println(petChoice.getName() + "\"Thanks for charging me! What next?\"");
+								}
 
+							}
 							break;
 // Play with one pet
 						case "2":
@@ -167,13 +212,25 @@ public class Application {
 							break;
 // Walk one pet
 						case "3":
-							if (petChoice.getBladder() <= 0) {
-								System.out.println(
-										petChoice.getName() + " says, \"Tank's tapped. Let's do something else.\"");
-							} else {
-								petChoice.walk();
-								System.out.println(
-										petChoice.getName() + " says \"Oh boy, walks are my favorite! What next?\"");
+							if (petChoice instanceof OrganicPet) {
+								if (((OrganicPet) petChoice).getBladder() <= 0) {
+									System.out.println(
+											petChoice.getName() + " says, \"Tank's tapped. Let's do something else.\"");
+								} else {
+									((OrganicPet) petChoice).walk();
+									System.out.println(
+											petChoice.getName() + " says \"Thanks for walking me! What next?\"");
+								}
+							}
+							else if (petChoice instanceof RoboticPet) {
+								if (((RoboticPet) petChoice).getOilGauge() <= 0) {
+									System.out.println(petChoice.getName()
+											+ "says, \"No thanks, Oil's clean! Let's do something else.\"");
+								} else {
+									((RoboticPet) petChoice).oilChange();
+									System.out.println(petChoice.getName() + "\"Thanks for adding oil! What next?\"");
+								}
+
 							}
 
 							break;
@@ -195,12 +252,12 @@ public class Application {
 							break;
 						// Measure mortality
 						}
-						if (petChoice.getHappiness() > 32) {
-							petMenu = false;
-							petShelter.removeVirtualPet(petChoice);
-							System.out.println("You have mistreated " + petChoice.getName() + ", you monster."
-									+ petChoice.getName() + " has died.");
-						}
+//						if (petChoice.getHappiness() > 32) {
+//							petMenu = false;
+//							petShelter.removeVirtualPet(petChoice);
+//							System.out.println("You have mistreated " + petChoice.getName() + ", you monster."
+//									+ petChoice.getName() + " has died.");
+//						}
 					}
 				}
 			}

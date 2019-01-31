@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+@SuppressWarnings("unused")
 public class RoboticPetTest {
 
 	@Test
@@ -74,5 +75,25 @@ public class RoboticPetTest {
 
 		assertEquals(beforeAction - 4, afterAction);
 	}
+	
+	@Test
+	public void tickCheck() {
+		RoboticPet underTest = new RoboticPet(null);
+		
+		int a = underTest.getBatteryLife();
+		int b = underTest.getOilGauge();
+		int c = underTest.getMaintenance();
+		
+		underTest.tick(5);
+		
+		int d = underTest.getBatteryLife();
+		int e = underTest.getBatteryLife();
+		int f = underTest.getMaintenance();
+		
+		assertEquals(a + 1, d);
+		assertEquals(b + 1, e);
+		assertEquals(c + 2, f);
 
+	}
+	
 }

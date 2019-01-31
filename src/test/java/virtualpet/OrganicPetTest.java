@@ -76,5 +76,25 @@ public class OrganicPetTest {
 
 		assertEquals(beforeAction - 8, afterAction);
 	}
+	
+	@Test
+	public void tickCheck() {
+		OrganicPet underTest = new OrganicPet(null);
+		
+		int a = underTest.getBladder();
+		int b = underTest.getHunger();
+		int c = underTest.getHappiness();
+		
+		underTest.tick(5);
+		
+		int d = underTest.getBladder();
+		int e = underTest.getHunger();
+		int f = underTest.getHappiness();
+		
+		assertEquals(a + 1, d);
+		assertEquals(b + 1, e);
+		assertEquals(c + 2, f);
+
+	}
 
 }

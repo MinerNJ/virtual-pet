@@ -30,15 +30,13 @@ public class VirtualPet {
 		return loneliness;
 	}
 
-//	// time method
-//	public void tick() {
-//		int time = 1;
-//		hunger += time;
-//		boredom += time;
-//		bladder += time;
-//		loneliness += time;
-//		happiness += 2;
-//	}
+	// time method
+	public void allTick(int turnCount) {
+		if (turnCount % 5 == 0) {
+			boredom += 1;
+			loneliness += 1;
+		}
+	}
 	// Test a counter "clock", after so many "turns" all properties change
 
 	public void play() {

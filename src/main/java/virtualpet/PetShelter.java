@@ -7,18 +7,27 @@ public class PetShelter {
 
 	private HashMap<String, VirtualPet> virtualPets = new HashMap<String, VirtualPet>();
 
+
 	public int getShelterSize() {
 		return virtualPets.size();
 	}
-
+	
 	public void addVirtualPet(VirtualPet pet) {
+		virtualPets.put(pet.getName(), pet);
+	}
+
+	public void addOrganicPet(OrganicPet pet) {
+		virtualPets.put(pet.getName(), pet);
+	}
+	
+	public void addRoboticPet(RoboticPet pet) {
 		virtualPets.put(pet.getName(), pet);
 	}
 
 	public void removeVirtualPet(VirtualPet pet) {
 		virtualPets.remove(pet.getName(), pet);
 	}
-
+	
 // Getter
 	public HashMap<String, VirtualPet> getVirtualPets() {
 		return virtualPets;
@@ -38,7 +47,6 @@ public class PetShelter {
 	// Get status of all pets
 	public void getShelterStatus() {
 		for (VirtualPet pet : virtualPets.values()) {
-
 			if (pet instanceof OrganicPet) {
 				((OrganicPet) pet).checkStatus();
 			} else if (pet instanceof RoboticPet) {
@@ -48,9 +56,12 @@ public class PetShelter {
 	}
 
 	public void feedAllPets() {
-		Collection<VirtualPet> virtualPets = getVirtualPets().values();
-		for (VirtualPet pet : virtualPets) {
-			pet.feed();
+		for (VirtualPet pet : virtualPets.values()) {
+			if (pet instanceof OrganicPet) {
+				((OrganicPet) pet).feed();
+			} else if (pet instanceof RoboticPet) {
+				((RoboticPet) pet).charge();
+			}
 		}
 	}
 
@@ -64,9 +75,12 @@ public class PetShelter {
 
 	// bladder
 	public void walkAllPets() {
-		Collection<VirtualPet> virtualPets = getVirtualPets().values();
-		for (VirtualPet pet : virtualPets) {
-			pet.walk();
+		for (VirtualPet pet : virtualPets.values()) {
+			if (pet instanceof OrganicPet) {
+				((OrganicPet) pet).walk();
+			} else if (pet instanceof RoboticPet) {
+				((RoboticPet) pet).oilChange();
+			}
 		}
 	}
 

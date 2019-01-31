@@ -20,7 +20,39 @@ public class PetShelterTest {
 		// Assert
 		Assert.assertEquals(initialPets + 1, petsAfterAddition);
 	}
+	
+	@Test
+	public void shouldBeAbleToAddOrganicPet() {
+		// Arrange
+		PetShelter underTest = new PetShelter();
+		OrganicPet pet = new OrganicPet(null);
 
+		// Act
+
+		int initialPets = underTest.getShelterSize();
+		underTest.addOrganicPet(pet); // Add virtual pet to PetShelter instance
+		int petsAfterAddition = underTest.getShelterSize();
+
+		// Assert
+		Assert.assertEquals(initialPets + 1, petsAfterAddition);
+	}
+
+	@Test
+	public void shouldBeAbleToAddRoboticPet() {
+		// Arrange
+		PetShelter underTest = new PetShelter();
+		RoboticPet pet = new RoboticPet(null);
+
+		// Act
+
+		int initialPets = underTest.getShelterSize();
+		underTest.addRoboticPet(pet); // Add virtual pet to PetShelter instance
+		int petsAfterAddition = underTest.getShelterSize();
+
+		// Assert
+		Assert.assertEquals(initialPets + 1, petsAfterAddition);
+	}
+	
 	@Test
 	public void shouldRemovePet() {
 		PetShelter underTest = new PetShelter();
@@ -34,6 +66,20 @@ public class PetShelterTest {
 		Assert.assertEquals(initialPets - 1, petsAfterRemoval);
 	}
 
+//	@Test
+//	public void testPrint() {
+//		PetShelter underTest = new PetShelter();
+//		VirtualPet buddy = new OrganicPet("Buddy");
+//		VirtualPet ralph = new RoboticPet("Ralph");
+//		VirtualPet george = new OrganicPet("George");
+//
+//		underTest.addVirtualPet(buddy);
+//		underTest.addVirtualPet(ralph);
+//		underTest.addVirtualPet(george);
+//
+//		underTest.getShelterStatus();
+//	}
+	
 	@Test
 	public void shouldFindPet() {
 		PetShelter underTest = new PetShelter();
@@ -46,32 +92,38 @@ public class PetShelterTest {
 		Assert.assertEquals("Buddy", foundPet.getName());
 	}
 
+	
+	
 	@Test
 	public void shouldFeedAllPets() {
 		PetShelter underTest = new PetShelter();
-
-		VirtualPet buddy = new VirtualPet("Buddy");
-		VirtualPet ralph = new VirtualPet("Ralph");
-		VirtualPet george = new VirtualPet("George");
+		OrganicPet buddy = new OrganicPet("Buddy");
+		OrganicPet ralph = new OrganicPet("Ralph");
+		RoboticPet george = new RoboticPet("George");
 
 		underTest.addVirtualPet(buddy);
 		underTest.addVirtualPet(ralph);
 		underTest.addVirtualPet(george);
 
-		int beforeFeeding = buddy.getHunger() + ralph.getHunger() + george.getHunger();
+		int beforeFeeding = buddy.getHunger() + ralph.getHunger() + george.getBatteryLife();
 		underTest.feedAllPets();
-		int afterFeeding = buddy.getHunger() + ralph.getHunger() + george.getHunger();
+		int afterFeeding = buddy.getHunger() + ralph.getHunger() + george.getBatteryLife();
 
-		Assert.assertEquals(beforeFeeding - 6, afterFeeding);
+		Assert.assertEquals(beforeFeeding - 4, afterFeeding);
 
+	}
+
+	private void checkPetReal() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Test
 	public void shouldPlayWithAllPets() {
 		PetShelter underTest = new PetShelter();
-		VirtualPet buddy = new VirtualPet("Buddy");
-		VirtualPet ralph = new VirtualPet("Ralph");
-		VirtualPet george = new VirtualPet("George");
+		OrganicPet buddy = new OrganicPet("Buddy");
+		OrganicPet ralph = new OrganicPet("Ralph");
+		RoboticPet george = new RoboticPet("George");
 
 		underTest.addVirtualPet(buddy);
 		underTest.addVirtualPet(ralph);
@@ -83,19 +135,45 @@ public class PetShelterTest {
 
 		Assert.assertEquals(beforePlaying - 6, afterPlaying);
 	}
-
+	
 	@Test
-	public void testPrint() {
+	public void shouldWalkAllPets() {
 		PetShelter underTest = new PetShelter();
-		VirtualPet buddy = new OrganicPet("Buddy");
-		VirtualPet ralph = new RoboticPet("Ralph");
-		VirtualPet george = new OrganicPet("George");
+		OrganicPet buddy = new OrganicPet("Buddy");
+		OrganicPet ralph = new OrganicPet("Ralph");
+		RoboticPet george = new RoboticPet("George");
 
 		underTest.addVirtualPet(buddy);
 		underTest.addVirtualPet(ralph);
 		underTest.addVirtualPet(george);
 
-		underTest.getShelterStatus();
+		int beforeWalk = buddy.getBladder() + ralph.getBladder() + george.getOilGauge();
+		underTest.walkAllPets();
+		int afterWalk = buddy.getBladder() + ralph.getBladder() + george.getOilGauge();
+
+		Assert.assertEquals(beforeWalk - 4, afterWalk);
+	}
+	
+	@Test
+	public void shouldHugAllPets() {
+		PetShelter underTest = new PetShelter();
+		OrganicPet buddy = new OrganicPet("Buddy");
+		OrganicPet ralph = new OrganicPet("Ralph");
+		RoboticPet george = new RoboticPet("George");
+
+		underTest.addVirtualPet(buddy);
+		underTest.addVirtualPet(ralph);
+		underTest.addVirtualPet(george);
+
+		int beforeHug = buddy.getLoneliness() + ralph.getLoneliness() + george.getLoneliness();
+		underTest.hugAllPets();
+		int afterHug = buddy.getLoneliness() + ralph.getLoneliness() + george.getLoneliness();
+
+		Assert.assertEquals(beforeHug - 6, afterHug);
 	}
 
+	
+
+	
+	
 }
