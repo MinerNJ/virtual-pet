@@ -84,7 +84,7 @@ public class RoboticPetTest {
 		int b = underTest.getOilGauge();
 		int c = underTest.getMaintenance();
 		
-		underTest.tick();
+		underTest.tick(5);
 		
 		int d = underTest.getBatteryLife();
 		int e = underTest.getBatteryLife();

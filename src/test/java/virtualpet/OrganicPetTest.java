@@ -85,7 +85,7 @@ public class OrganicPetTest {
 		int b = underTest.getHunger();
 		int c = underTest.getHappiness();
 		
-		underTest.tick();
+		underTest.tick(5);
 		
 		int d = underTest.getBladder();
 		int e = underTest.getHunger();

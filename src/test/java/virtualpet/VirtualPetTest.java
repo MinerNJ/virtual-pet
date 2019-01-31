@@ -56,7 +56,7 @@ public class VirtualPetTest {
 		int a = underTest.getBoredom();
 		int b = underTest.getLoneliness();
 		
-		underTest.tick();
+		underTest.allTick(5);
 		
 		int c = underTest.getBoredom();
 		int d = underTest.getLoneliness();

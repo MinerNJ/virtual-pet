@@ -30,12 +30,13 @@ public class RoboticPet extends VirtualPet {
 	}
 
 	// time method
-			public void tick() {
-				batteryLife += 1;
-				oilGauge += 1;
-				maintenance += 2;
-			}
-		// Test a counter "clock", after so many "turns" all properties change
+	public void tick(int turnCount) {
+		if (turnCount % 5 == 0) {
+			batteryLife += 1;
+			oilGauge += 1;
+		}
+	}
+	// Test a counter "clock", after so many "turns" all properties change
 
 // Action methods
 	public void charge() {

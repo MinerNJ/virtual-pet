@@ -16,6 +16,17 @@ public class Application {
 // Shelter menu
 		boolean repeatMainMenu = true;
 		while (repeatMainMenu) {
+			
+			counter += 1; 
+			for (VirtualPet pet : petShelter.getVirtualPets().values()) {
+				pet.allTick(counter);
+				if (pet instanceof OrganicPet) {
+					((OrganicPet) pet).tick(counter);
+				} else if (pet instanceof RoboticPet) {
+					((RoboticPet) pet).tick(counter);
+				} 
+			}
+			
 			System.out.println("What would you like to do?");
 			System.out.println("1. Admit new pet");
 			System.out.println("2. Adopt out new pet");
@@ -80,10 +91,6 @@ public class Application {
 					System.out.println("If you don't keep " + newPetName + " happy, " + newPetName + " will die!");
 					System.out.println("Keep " + newPetName
 							+ " happy by feeding it, playing with it, walking it, and hugging it.");
-					counter += 1;
-					if(counter %5 == 0) {
-						
-					}
 					break;
 
 				// Remove Pet
