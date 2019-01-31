@@ -6,10 +6,15 @@ import java.util.HashMap;
 public class PetShelter {
 
 	private HashMap<String, VirtualPet> virtualPets = new HashMap<String, VirtualPet>();
+	private int cleanliness = 100;
 
-// Getter
+// Getters
 	public HashMap<String, VirtualPet> getVirtualPets() {
 		return virtualPets;
+	}
+
+	public int getCleanliness() {
+		return cleanliness;
 	}
 
 // Shelter Methods
@@ -44,15 +49,15 @@ public class PetShelter {
 		}
 	}
 
-	// Get status of all pets
-	public void getShelterStatus() {
-		for (VirtualPet pet : virtualPets.values()) {
-			if (pet instanceof OrganicPet) {
-				((OrganicPet) pet).checkStatus();
-			} else if (pet instanceof RoboticPet) {
-				((RoboticPet) pet).checkPerformanceLevel();
-			}
-		}
+	// Shelter cleanliness decreases
+	public void dirtyShelter(int turnCount) {
+		if (turnCount % 5 == 0)
+			cleanliness -= 5;
+	}
+
+	// Clean shelter
+	public void cleanShelter() {
+		cleanliness = 100;
 	}
 
 	public void feedAllPets() {

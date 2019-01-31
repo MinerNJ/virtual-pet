@@ -19,8 +19,8 @@ public class Application {
 
 			// TICK
 			counter += 1;
+			petShelter.dirtyShelter(counter);
 			for (VirtualPet pet : petShelter.getVirtualPets().values()) {
-				pet.allTick(counter);
 				if (pet instanceof OrganicPet) {
 					((OrganicPet) pet).tick(counter);
 				} else if (pet instanceof RoboticPet) {
@@ -31,7 +31,7 @@ public class Application {
 			System.out.println("What would you like to do?");
 			System.out.println("1. Admit new pet to the shelter");
 			System.out.println("2. Adopt out a shelter pet");
-			System.out.println("3. Check status of all pets");
+			System.out.println("3. Check shelter status");
 			System.out.println("4. Perform shelter duties");
 			System.out.println("5. Choose a pet to interact with");
 			System.out.println("6. Save and Exit");
@@ -106,7 +106,24 @@ public class Application {
 				// Get status of all pets
 				case "3":
 					System.out.println("Here are all of the pets in the shelter:");
-					petShelter.getShelterStatus();
+					for (VirtualPet pet : petShelter.getVirtualPets().values()) {
+						if (pet instanceof OrganicPet) {
+							System.out.println(
+									((OrganicPet) pet).getName() + " has a hunger of " + ((OrganicPet) pet).getHunger()
+											+ ", a boredom of " + ((OrganicPet) pet).getBoredom() + ", a bladder of "
+											+ ((OrganicPet) pet).getBladder() + ", a loneliness of "
+											+ ((OrganicPet) pet).getLoneliness() + ", and a health level of "
+											+ ((OrganicPet) pet).getHealth() + " out of 100.");
+						} else if (pet instanceof RoboticPet) {
+							System.out.println(((RoboticPet) pet).getName() + "'s battery has been depleted by "
+									+ ((RoboticPet) pet).getBatteryLife() + ", has a boredom of "
+									+ ((RoboticPet) pet).getBoredom() + ", has burned "
+									+ ((RoboticPet) pet).getOilGauge() + " units of oil, has a loneliness of "
+									+ ((RoboticPet) pet).getLoneliness() + ", and a performance level of "
+									+ ((RoboticPet) pet).getPerformance() + " out of 100.");
+						}
+					}
+					System.out.println("The shelter is " + petShelter.getCleanliness() + "% clean.");
 					break;
 
 				// Interact with all pets
@@ -116,8 +133,8 @@ public class Application {
 
 						// TICK
 						counter += 1;
+						petShelter.dirtyShelter(counter);
 						for (VirtualPet pet : petShelter.getVirtualPets().values()) {
-							pet.allTick(counter);
 							if (pet instanceof OrganicPet) {
 								((OrganicPet) pet).tick(counter);
 							} else if (pet instanceof RoboticPet) {
@@ -132,7 +149,8 @@ public class Application {
 						System.out.println("2. Play with all of the pets.");
 						System.out.println("3. Walk all of the pets.");
 						System.out.println("4. Hug all of the pets.");
-						System.out.println("5. Return to Main Menu");
+						System.out.println("5. Clean shelter");
+						System.out.println("6. Return to Main Menu");
 						String shelterMenuSelection = input.nextLine();
 
 						switch (shelterMenuSelection) {
@@ -161,8 +179,14 @@ public class Application {
 							System.out.println("All of the pets have been hugged and feel so loved!");
 							break;
 
-						// Exit shelter menu
+						// Clean shelter
 						case "5":
+							petShelter.cleanShelter();
+							System.out.println("The shelter is now " + petShelter.getCleanliness() + "% clean!");
+							break;
+
+						// Exit shelter menu
+						case "6":
 							shelterMenu = false;
 							break;
 						}
@@ -184,8 +208,8 @@ public class Application {
 
 						// TICK
 						counter += 1;
+						petShelter.dirtyShelter(counter);
 						for (VirtualPet pet : petShelter.getVirtualPets().values()) {
-							pet.allTick(counter);
 							if (pet instanceof OrganicPet) {
 								((OrganicPet) pet).tick(counter);
 							} else if (pet instanceof RoboticPet) {
@@ -287,23 +311,33 @@ public class Application {
 	public static void mortalityTest(PetShelter petShelter) {
 		for (VirtualPet pet : petShelter.getVirtualPets().values()) {
 			if (pet instanceof OrganicPet) {
-				if (((OrganicPet) pet).getHappiness() <= 25) {
+				if (((OrganicPet) pet).getHealth() <= 25) {
 					System.out.println(((OrganicPet) pet).getName() + " has died, you monster!");
 					petShelter.removeVirtualPet(pet);
-				} else if (((OrganicPet) pet).getHappiness() <= 40) {
+				} else if (((OrganicPet) pet).getHealth() <= 40) {
 					System.out.println(((OrganicPet) pet).getName() + " is unhappy! Make sure "
 							+ ((OrganicPet) pet).getName() + " doesn't die!");
 				}
 			}
 			if (pet instanceof RoboticPet) {
-				if (((RoboticPet) pet).getMaintenance() <= 0) {
+				if (((RoboticPet) pet).getPerformance() <= 0) {
 					System.out.println(((RoboticPet) pet).getName() + " has shut down, you monster!");
 					petShelter.removeVirtualPet(pet);
-				} else if (((RoboticPet) pet).getMaintenance() <= 20) {
+				} else if (((RoboticPet) pet).getPerformance() <= 20) {
 					System.out.println(((RoboticPet) pet).getName() + " is malfunctioning! Make sure "
 							+ ((RoboticPet) pet).getName() + " doesn't shut down!");
 				}
 			}
+		}
+		if (petShelter.getCleanliness() <= 25) {
+			System.out.println("Your shelter is too dirty and is endangering your pets.");
+			System.out.println("The building has been condemned by the city.");
+			System.out.println("All pets were transferred to another shelter.");
+			System.out.println("GAME OVER");
+			System.exit(0);
+		} else if (petShelter.getCleanliness() <= 50) {
+			System.out.println("Your shelter is " + petShelter.getCleanliness() + "% clean.");
+			System.out.println("Clean your shelter regularly to avoid eviction.");
 		}
 	}
 }

@@ -53,14 +53,14 @@ public class OrganicPetTest {
 	public void happinessCheck() {
 		OrganicPet underTest = new OrganicPet("Jeff");
 
-		int beforeAction = underTest.getHappiness();
+		int beforeAction = underTest.getHealth();
 
 		underTest.feed();
 		underTest.play();
 		underTest.walk();
 		underTest.hug();
 
-		int afterAction = underTest.getHappiness();
+		int afterAction = underTest.getHealth();
 
 		assertEquals(beforeAction + 8, afterAction);
 	}
@@ -69,20 +69,25 @@ public class OrganicPetTest {
 	public void tickCheck() {
 		OrganicPet underTest = new OrganicPet(null);
 
-		int a = underTest.getBladder();
-		int b = underTest.getHunger();
-		int c = underTest.getHappiness();
+		int a = underTest.getHunger();
+		int b = underTest.getBoredom();
+		int c = underTest.getBladder();
+		int d = underTest.getLoneliness();
+		int e = underTest.getHealth();
 
 		underTest.tick(5);
 
-		int d = underTest.getBladder();
-		int e = underTest.getHunger();
-		int f = underTest.getHappiness();
+		int a2 = underTest.getHunger();
+		int b2 = underTest.getBoredom();
+		int c2 = underTest.getBladder();
+		int d2 = underTest.getLoneliness();
+		int e2 = underTest.getHealth();
 
-		assertEquals(a + 1, d);
-		assertEquals(b + 1, e);
-		assertEquals(c - 2, f);
-
+		assertEquals(a + 1, a2);
+		assertEquals(b + 1, b2);
+		assertEquals(c + 1, c2);
+		assertEquals(d + 1, d2);
+		assertEquals(e - 4, e2);
 	}
 
 }
