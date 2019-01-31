@@ -7,11 +7,16 @@ public class PetShelter {
 
 	private HashMap<String, VirtualPet> virtualPets = new HashMap<String, VirtualPet>();
 
+// Getter
+	public HashMap<String, VirtualPet> getVirtualPets() {
+		return virtualPets;
+	}
 
+// Shelter Methods
 	public int getShelterSize() {
 		return virtualPets.size();
 	}
-	
+
 	public void addVirtualPet(VirtualPet pet) {
 		virtualPets.put(pet.getName(), pet);
 	}
@@ -19,18 +24,13 @@ public class PetShelter {
 	public void addOrganicPet(OrganicPet pet) {
 		virtualPets.put(pet.getName(), pet);
 	}
-	
+
 	public void addRoboticPet(RoboticPet pet) {
 		virtualPets.put(pet.getName(), pet);
 	}
 
 	public void removeVirtualPet(VirtualPet pet) {
 		virtualPets.remove(pet.getName(), pet);
-	}
-	
-// Getter
-	public HashMap<String, VirtualPet> getVirtualPets() {
-		return virtualPets;
 	}
 
 	public VirtualPet findVirtualPet(String name) {

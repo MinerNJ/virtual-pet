@@ -26,18 +26,6 @@ public class RoboticPetTest {
 		assertEquals(0, actual);
 	}
 
-//	// Tick test:
-//	@Test
-//	public void shouldTick() {
-//		OrganicPet underTest = new OrganicPet("Jeff");
-//
-//		int beforeAction = pet.getHunger();
-//		pet.tick();
-//		int afterAction = pet.getHunger();
-//
-//		assertEquals(beforeAction + 1, afterAction);
-//	}
-
 	@Test
 	public void shouldCharge() {
 		RoboticPet underTest = new RoboticPet("Jeff");
@@ -73,27 +61,27 @@ public class RoboticPetTest {
 
 		int afterAction = underTest.getMaintenance();
 
-		assertEquals(beforeAction - 4, afterAction);
+		assertEquals(beforeAction + 4, afterAction);
 	}
-	
+
 	@Test
 	public void tickCheck() {
 		RoboticPet underTest = new RoboticPet(null);
-		
+
 		int a = underTest.getBatteryLife();
 		int b = underTest.getOilGauge();
 		int c = underTest.getMaintenance();
-		
+
 		underTest.tick(5);
-		
+
 		int d = underTest.getBatteryLife();
 		int e = underTest.getBatteryLife();
 		int f = underTest.getMaintenance();
-		
+
 		assertEquals(a + 1, d);
 		assertEquals(b + 1, e);
-		assertEquals(c + 2, f);
+		assertEquals(c - 2, f);
 
 	}
-	
+
 }
