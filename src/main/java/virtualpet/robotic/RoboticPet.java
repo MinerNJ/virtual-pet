@@ -1,6 +1,9 @@
-package virtualpet;
+package virtualpet.robotic;
 
-public class RoboticPet extends VirtualPet {
+import virtualpet.VirtualPet;
+import virtualpet.interfaces.Purr;
+
+public abstract class RoboticPet extends VirtualPet implements Purr {
 
 	// Subclass properties
 	private int batteryLife;
@@ -45,6 +48,11 @@ public class RoboticPet extends VirtualPet {
 
 	public void oilChange() {
 		oilGauge = 0;
+	}
+
+	@Override
+	public String vocalization() {
+		return "Hum";
 	}
 
 }

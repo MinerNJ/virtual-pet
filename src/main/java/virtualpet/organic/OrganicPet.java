@@ -1,8 +1,10 @@
-package virtualpet;
+package virtualpet.organic;
 
 import java.util.Random;
 
-public class OrganicPet extends VirtualPet {
+import virtualpet.VirtualPet;
+
+public abstract class OrganicPet extends VirtualPet {
 
 	// Properties
 	private int hunger;

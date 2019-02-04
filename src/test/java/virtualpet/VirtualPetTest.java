@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import virtualpet.organic.OrganicPet;
+
 public class VirtualPetTest {
 
 	@Test

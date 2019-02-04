@@ -2,6 +2,10 @@ package virtualpet;
 
 import java.util.Scanner;
 
+import virtualpet.organic.OrganicPet;
+import virtualpet.robotic.RoboticPet;
+import virtualpet.shelter.PetShelter;
+
 public class Application {
 
 	public static void main(String[] args) {
