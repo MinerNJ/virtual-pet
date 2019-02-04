@@ -55,14 +55,4 @@ public class OrganicPet extends VirtualPet {
 		}
 	}
 
-<<<<<<< HEAD
-	public void checkStatus() {
-	// Return a string that contains the status
-		System.out.println(getName() + " has a hunger of " + hunger + ", a boredom of " + getBoredom()
-				+ ", a bladder of " + bladder + ", a loneliness of " + getLoneliness() + ", and a happiness of "
-				+ this.getHappiness() + " out of 100.");
-	}
-
-=======
->>>>>>> f8dd799d4a1e008a5b55b8eba692ebc28b2ff26e
 }
