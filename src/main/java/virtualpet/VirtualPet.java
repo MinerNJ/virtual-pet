@@ -49,4 +49,5 @@ public abstract class VirtualPet {
 			loneliness = 0;
 		}
 	}
+
 }
