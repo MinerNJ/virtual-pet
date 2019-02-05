@@ -1,7 +1,12 @@
-package virtualpet;
+package virtualpet.shelter;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import virtualpet.VirtualPet;
+import virtualpet.organic.OrganicPet;
+import virtualpet.robotic.RoboticPet;
+import virtualpet.shelter.PetShelter;
 
 public class PetShelterTest {
 
