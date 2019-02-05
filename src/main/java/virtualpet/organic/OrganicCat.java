@@ -10,7 +10,7 @@ public class OrganicCat extends OrganicPet implements Purr {
 
 	@Override
 	public String vocalization() {
-		return "Purr";
+		return " *purrs*";
 		
 	}
 

@@ -52,7 +52,7 @@ public abstract class RoboticPet extends VirtualPet implements Purr {
 
 	@Override
 	public String vocalization() {
-		return "Hum";
+		return " *hums*";
 	}
 
 }

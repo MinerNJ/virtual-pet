@@ -104,11 +104,6 @@ public class PetShelterTest {
 
 	}
 
-	private void checkPetReal() {
-		// TODO Auto-generated method stub
-
-	}
-
 	@Test
 	public void shouldPlayWithAllPets() {
 		PetShelter underTest = new PetShelter();

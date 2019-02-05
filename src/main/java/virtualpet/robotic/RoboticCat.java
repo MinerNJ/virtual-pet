@@ -8,6 +8,6 @@ public class RoboticCat extends RoboticPet {
 
 	@Override
 	public String vocalization() {
-		return "Purrs and Hum";
+		return " *purrs* and *hums*";
 	}
 }
