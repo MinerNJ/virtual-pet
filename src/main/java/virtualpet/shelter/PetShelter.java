@@ -30,14 +30,6 @@ public class PetShelter {
 		virtualPets.put(pet.getName(), pet);
 	}
 
-	public void addOrganicPet(OrganicPet pet) {
-		virtualPets.put(pet.getName(), pet);
-	}
-
-	public void addRoboticPet(RoboticPet pet) {
-		virtualPets.put(pet.getName(), pet);
-	}
-
 	public void removeVirtualPet(VirtualPet pet) {
 		virtualPets.remove(pet.getName(), pet);
 	}

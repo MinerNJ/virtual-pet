@@ -2,7 +2,11 @@ package virtualpet;
 
 import java.util.Scanner;
 
+import virtualpet.organic.OrganicCat;
+import virtualpet.organic.OrganicDog;
 import virtualpet.organic.OrganicPet;
+import virtualpet.robotic.RoboticCat;
+import virtualpet.robotic.RoboticDog;
 import virtualpet.robotic.RoboticPet;
 import virtualpet.shelter.PetShelter;
 
@@ -50,19 +54,40 @@ public class Application {
 
 				String name = input.nextLine();
 
-				System.out.println("Great! Now, is " + name + " a real animal, or a robot animal?");
-				System.out.println("1. Real animal");
-				System.out.println("2. Robotic animal");
+				System.out.println("Great! Please answer some questions about " + name + ".");
+				System.out.println("Does " + name + " dream of electric sheep?");
+				System.out.println("1. Yes");
+				System.out.println("2. No");
 
-				String petTypeSelection = input.nextLine();
-				if (petTypeSelection.equals("1")) {
-					OrganicPet pet = new OrganicPet(name);
-					petShelter.addOrganicPet(pet);
-				} else {
-					RoboticPet pet = new RoboticPet(name); // Try to add "Robo" to name here
-					petShelter.addRoboticPet(pet);
+				String firstAnswer = input.nextLine();
+				if (firstAnswer.equals("1")) {
+					System.out.println("Does " + name + " chase the electric sheep?");
+					System.out.println("1. Yes");
+					System.out.println("2. No");
+					String secondAnswer = input.nextLine();
+					if (secondAnswer.equals("1")) {
+					String robotName = "Robo" + name;
+						RoboticPet pet = new RoboticDog(robotName); // Try to add "Robo" to name here
+					petShelter.addVirtualPet(pet);
+					} else if (secondAnswer.equals("2")) {
+						String robotName = "Robo" + name;
+						RoboticPet pet = new RoboticCat(robotName); // Try to add "Robo" to name here
+						petShelter.addVirtualPet(pet);
+					} 
+				} else if (firstAnswer.equals("2")) {
+					System.out.println("Does " + name + " chase its tail?");
+					System.out.println("1. Yes");
+					System.out.println("2. No");
+					String thirdAnswer = input.nextLine();
+					if (thirdAnswer.equals("1")) {
+						OrganicPet pet = new OrganicDog(name);
+						petShelter.addVirtualPet(pet);
+					} else if (thirdAnswer.equals("2")) {
+						OrganicPet pet = new OrganicCat(name);
+						petShelter.addVirtualPet(pet);
+					}
+			
 				}
-
 			} else {
 
 				switch (mainMenuSelection) {
@@ -73,23 +98,46 @@ public class Application {
 					if (newPetName.toLowerCase().equals("exit")) {
 
 					} else {
-						System.out.println("Great! Now, is " + newPetName + " a real animal, or a robot animal?");
-						System.out.println("1. Real animal");
-						System.out.println("2. Robotic animal");
+						System.out.println("Great! Please answer some questions about " + newPetName + ".");
+						System.out.println("Does " + newPetName + " dream of electric sheep?");
+						System.out.println("1. Yes");
+						System.out.println("2. No");
 
-						String petTypeSelection = input.nextLine();
-						if (petTypeSelection.equals("1")) {
-							OrganicPet pet = new OrganicPet(newPetName);
-							petShelter.addOrganicPet(pet);
-						} else {
-							RoboticPet pet = new RoboticPet(newPetName); // Try to add "Robo" to name here
-							petShelter.addRoboticPet(pet);
+						String nameAnswer = input.nextLine();
+						if (nameAnswer.equals("1")) {
+							System.out.println("Does " + newPetName + " chase the electric sheep?");
+							System.out.println("1. Yes");
+							System.out.println("2. No");
+							String secondAnswer = input.nextLine();
+							if (secondAnswer.equals("1")) {
+							String robotName = "Robo" + newPetName;
+								RoboticPet pet = new RoboticDog(robotName); 
+								System.out.println("Here's your new Robot Dog, " + pet.getName() + "!");
+							petShelter.addVirtualPet(pet);
+							} else if (secondAnswer.equals("2")) {
+								String robotName = "Robo" + newPetName;
+								RoboticPet pet = new RoboticCat(robotName); 
+								petShelter.addVirtualPet(pet);
+								System.out.println("Here's your new Robotic Cat, " + pet.getName() + "!");
+							} 
+						} else if (nameAnswer.equals("2")) {
+							System.out.println("Does " + newPetName + " chase its tail?");
+							System.out.println("1. Yes");
+							System.out.println("2. No");
+							String thirdAnswer = input.nextLine();
+							if (thirdAnswer.equals("1")) {
+								OrganicPet pet = new OrganicDog(newPetName);
+								System.out.println("Here's your new Dog, " + pet.getName() + "!");
+								petShelter.addVirtualPet(pet);
+							} else if (thirdAnswer.equals("2")) {
+								OrganicPet pet = new OrganicCat(newPetName);
+								System.out.println("Here's your new Cat, " + pet.getName() + "!");
+								petShelter.addVirtualPet(pet);
+							}
 						}
-
-						System.out.println("Here's your new pet, " + newPetName + "!");
-						System.out.println("If you don't keep " + newPetName + " happy, " + newPetName + " will die!");
-						System.out.println("Keep " + newPetName
-								+ " happy by feeding it, playing with it, walking it, and hugging it.");
+						
+						System.out.println("Keep your new pet "
+								+ "happy by feeding it, playing with it, walking it, and hugging it.");
 					}
 					break;
 
@@ -113,18 +161,19 @@ public class Application {
 					for (VirtualPet pet : petShelter.getVirtualPets().values()) {
 						if (pet instanceof OrganicPet) {
 							System.out.println(
-									((OrganicPet) pet).getName() + " has a hunger of " + ((OrganicPet) pet).getHunger()
-											+ ", a boredom of " + ((OrganicPet) pet).getBoredom() + ", a bladder of "
-											+ ((OrganicPet) pet).getBladder() + ", a loneliness of "
-											+ ((OrganicPet) pet).getLoneliness() + ", and a health level of "
-											+ ((OrganicPet) pet).getHealth() + " out of 100.");
+								((OrganicPet) pet).getName() + "\n hunger = " + ((OrganicPet) pet).getHunger()
+											+ ", boredom = " + ((OrganicPet) pet).getBoredom() + ", bladder = "
+											+ ((OrganicPet) pet).getBladder() + ", \n loneliness = "
+											+ ((OrganicPet) pet).getLoneliness() + ", health = "
+											+ ((OrganicPet) pet).getHealth() + "/100");
 						} else if (pet instanceof RoboticPet) {
-							System.out.println(((RoboticPet) pet).getName() + "'s battery has been depleted by "
-									+ ((RoboticPet) pet).getBatteryLife() + ", has a boredom of "
-									+ ((RoboticPet) pet).getBoredom() + ", has burned "
-									+ ((RoboticPet) pet).getOilGauge() + " units of oil, has a loneliness of "
-									+ ((RoboticPet) pet).getLoneliness() + ", and a performance level of "
-									+ ((RoboticPet) pet).getPerformance() + " out of 100.");
+							
+							System.out.println(((RoboticPet) pet).getName() + "\n battery depletion = "
+									+ ((RoboticPet) pet).getBatteryLife() + ", boredom = "
+									+ ((RoboticPet) pet).getBoredom() + ", oil used = "
+									+ ((RoboticPet) pet).getOilGauge() + ", \n loneliness = "
+									+ ((RoboticPet) pet).getLoneliness() + ", performance = "
+									+ ((RoboticPet) pet).getPerformance() + "/100.");
 						}
 					}
 					System.out.println("The shelter is " + petShelter.getCleanliness() + "% clean.");
@@ -309,7 +358,7 @@ public class Application {
 				}
 			}
 			mortalityTest(petShelter);
-		}
+		}	
 	}
 
 	public static void mortalityTest(PetShelter petShelter) {
