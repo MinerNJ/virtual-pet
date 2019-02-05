@@ -7,12 +7,11 @@ import org.junit.Test;
 
 import virtualpet.robotic.RoboticPet;
 
-@SuppressWarnings("unused")
 public class RoboticPetTest {
 
 	@Test
 	public void petShouldHaveName() {
-		RoboticPet underTest = new RoboticPet("Jeff");
+		RoboticPet underTest = new RoboticDog("Jeff");
 
 		String actual = underTest.getName();
 
@@ -21,7 +20,7 @@ public class RoboticPetTest {
 
 	@Test
 	public void shouldHaveDefaultBatteryCharge() {
-		RoboticPet underTest = new RoboticPet("Jeff");
+		RoboticPet underTest = new RoboticDog("Jeff");
 
 		int actual = underTest.getBatteryLife();
 
@@ -30,7 +29,7 @@ public class RoboticPetTest {
 
 	@Test
 	public void shouldCharge() {
-		RoboticPet underTest = new RoboticPet("Jeff");
+		RoboticPet underTest = new RoboticDog("Jeff");
 
 		underTest.charge();
 		int afterCharging = underTest.getBatteryLife();
@@ -41,7 +40,7 @@ public class RoboticPetTest {
 
 	@Test
 	public void shouldBeAbleToChangeOil() {
-		RoboticPet underTest = new RoboticPet("Jeff");
+		RoboticPet underTest = new RoboticDog("Jeff");
 
 		underTest.oilChange();
 		int afterOilChange = underTest.getOilGauge();
@@ -52,7 +51,7 @@ public class RoboticPetTest {
 
 	@Test
 	public void happinessCheck() {
-		RoboticPet underTest = new RoboticPet("Jeff");
+		RoboticPet underTest = new RoboticDog("Jeff");
 
 		int beforeAction = underTest.getPerformance();
 
@@ -68,7 +67,7 @@ public class RoboticPetTest {
 
 	@Test
 	public void tickCheck() {
-		RoboticPet underTest = new RoboticPet(null);
+		RoboticPet underTest = new RoboticDog(null);
 
 		int a = underTest.getBatteryLife();
 		int b = underTest.getBoredom();
