@@ -104,7 +104,6 @@ public class PetShelterTest {
 
 	}
 
-
 	@Test
 	public void shouldPlayWithAllPets() {
 		PetShelter underTest = new PetShelter();
