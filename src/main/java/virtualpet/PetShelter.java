@@ -43,7 +43,6 @@ public class PetShelter {
 	}
 
 	public void getPetNames() {
-//		Collection<VirtualPet> virtualPets = getVirtualPets().values();
 		for (VirtualPet pet : virtualPets.values()) {
 			System.out.println(pet.getName());
 		}

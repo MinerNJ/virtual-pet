@@ -47,10 +47,4 @@ public class RoboticPet extends VirtualPet {
 		oilGauge = 0;
 	}
 
-	public void checkPerformanceLevel() {
-		System.out.println(getName() + "'s battery has been depleted by " + batteryLife + ", has a boredom of "
-				+ getBoredom() + ", has burned " + oilGauge + " units of oil, has a loneliness of " + getLoneliness()
-				+ ", and a performance level of " + this.getPerformance() + " out of 100.");
-	}
-
 }
