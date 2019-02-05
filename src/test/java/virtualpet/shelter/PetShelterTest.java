@@ -37,7 +37,7 @@ public class PetShelterTest {
 		// Act
 
 		int initialPets = underTest.getShelterSize();
-		underTest.addOrganicPet(pet); // Add virtual pet to PetShelter instance
+		underTest.addVirtualPet(pet); // Add virtual pet to PetShelter instance
 		int petsAfterAddition = underTest.getShelterSize();
 
 		// Assert
@@ -53,7 +53,7 @@ public class PetShelterTest {
 		// Act
 
 		int initialPets = underTest.getShelterSize();
-		underTest.addRoboticPet(pet); // Add virtual pet to PetShelter instance
+		underTest.addVirtualPet(pet); // Add virtual pet to PetShelter instance
 		int petsAfterAddition = underTest.getShelterSize();
 
 		// Assert
