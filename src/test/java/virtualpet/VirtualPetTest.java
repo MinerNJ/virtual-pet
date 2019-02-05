@@ -5,13 +5,14 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import virtualpet.organic.OrganicDog;
 import virtualpet.organic.OrganicPet;
 
 public class VirtualPetTest {
 
 	@Test
 	public void petShouldHaveName() {
-		VirtualPet underTest = new OrganicPet("Jeff");
+		VirtualPet underTest = new OrganicDog("Jeff");
 
 		String actual = underTest.getName();
 
@@ -20,7 +21,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveDefaultBoredom() {
-		VirtualPet underTest = new OrganicPet("Steve");
+		VirtualPet underTest = new OrganicDog("Steve");
 
 		int actual = underTest.getBoredom();
 
@@ -29,7 +30,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldPlay() {
-		VirtualPet pet = new OrganicPet("Kendrick");
+		VirtualPet pet = new OrganicDog("Kendrick");
 
 		int beforeAction = pet.getBoredom();
 		pet.play();
@@ -41,7 +42,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHug() {
-		VirtualPet pet = new OrganicPet("Kendrick");
+		VirtualPet pet = new OrganicDog("Kendrick");
 
 		int beforeAction = pet.getLoneliness();
 		pet.hug();
@@ -53,7 +54,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void tickCheck() {
-		VirtualPet underTest = new OrganicPet(null);
+		VirtualPet underTest = new OrganicDog(null);
 
 		int a = underTest.getBoredom();
 		int b = underTest.getLoneliness();

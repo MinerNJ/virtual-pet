@@ -11,7 +11,7 @@ public class OrganicPetTest {
 
 	@Test
 	public void petShouldHaveName() {
-		OrganicPet underTest = new OrganicPet("Jeff");
+		OrganicPet underTest = new OrganicDog("Jeff");
 
 		String actual = underTest.getName();
 
@@ -20,7 +20,7 @@ public class OrganicPetTest {
 
 	@Test
 	public void shouldHaveDefaultHunger() {
-		OrganicPet underTest = new OrganicPet("Jeff");
+		OrganicPet underTest = new OrganicDog("Jeff");
 
 		int actual = underTest.getHunger();
 
@@ -29,7 +29,7 @@ public class OrganicPetTest {
 
 	@Test
 	public void shouldFeed() {
-		OrganicPet underTest = new OrganicPet("Jeff");
+		OrganicPet underTest = new OrganicDog("Jeff");
 
 		int beforeAction = underTest.getHunger();
 		underTest.feed();
@@ -41,7 +41,7 @@ public class OrganicPetTest {
 
 	@Test
 	public void shouldWalk() {
-		OrganicPet underTest = new OrganicPet("Jeff");
+		OrganicPet underTest = new OrganicDog("Jeff");
 
 		int beforeAction = underTest.getBladder();
 		underTest.walk();
@@ -53,7 +53,7 @@ public class OrganicPetTest {
 
 	@Test
 	public void happinessCheck() {
-		OrganicPet underTest = new OrganicPet("Jeff");
+		OrganicPet underTest = new OrganicDog("Jeff");
 
 		int beforeAction = underTest.getHealth();
 
@@ -69,7 +69,7 @@ public class OrganicPetTest {
 
 	@Test
 	public void tickCheck() {
-		OrganicPet underTest = new OrganicPet(null);
+		OrganicPet underTest = new OrganicDog(null);
 
 		int a = underTest.getHunger();
 		int b = underTest.getBoredom();

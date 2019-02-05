@@ -4,7 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import virtualpet.VirtualPet;
+import virtualpet.organic.OrganicDog;
 import virtualpet.organic.OrganicPet;
+import virtualpet.robotic.RoboticDog;
 import virtualpet.robotic.RoboticPet;
 import virtualpet.shelter.PetShelter;
 
@@ -14,7 +16,7 @@ public class PetShelterTest {
 	public void shouldBeAbleToAddPet() {
 		// Arrange
 		PetShelter underTest = new PetShelter();
-		VirtualPet pet = new OrganicPet(null);
+		VirtualPet pet = new OrganicDog(null);
 
 		// Act
 
@@ -30,7 +32,7 @@ public class PetShelterTest {
 	public void shouldBeAbleToAddOrganicPet() {
 		// Arrange
 		PetShelter underTest = new PetShelter();
-		OrganicPet pet = new OrganicPet(null);
+		OrganicPet pet = new OrganicDog(null);
 
 		// Act
 
@@ -46,7 +48,7 @@ public class PetShelterTest {
 	public void shouldBeAbleToAddRoboticPet() {
 		// Arrange
 		PetShelter underTest = new PetShelter();
-		RoboticPet pet = new RoboticPet(null);
+		RoboticPet pet = new RoboticDog(null);
 
 		// Act
 
@@ -61,7 +63,7 @@ public class PetShelterTest {
 	@Test
 	public void shouldRemovePet() {
 		PetShelter underTest = new PetShelter();
-		VirtualPet pet = new OrganicPet(null);
+		VirtualPet pet = new OrganicDog(null);
 		underTest.addVirtualPet(pet); // adding pet for testing purposes
 
 		int initialPets = underTest.getShelterSize();
@@ -75,7 +77,7 @@ public class PetShelterTest {
 	public void shouldFindPet() {
 		PetShelter underTest = new PetShelter();
 
-		VirtualPet buddy = new OrganicPet("Buddy");
+		VirtualPet buddy = new OrganicDog("Buddy");
 
 		underTest.addVirtualPet(buddy);
 		VirtualPet foundPet = underTest.findVirtualPet("Buddy");
@@ -86,9 +88,9 @@ public class PetShelterTest {
 	@Test
 	public void shouldFeedAllPets() {
 		PetShelter underTest = new PetShelter();
-		OrganicPet buddy = new OrganicPet("Buddy");
-		OrganicPet ralph = new OrganicPet("Ralph");
-		RoboticPet george = new RoboticPet("George");
+		OrganicPet buddy = new OrganicDog("Buddy");
+		OrganicPet ralph = new OrganicDog("Ralph");
+		RoboticPet george = new RoboticDog("George");
 
 		underTest.addVirtualPet(buddy);
 		underTest.addVirtualPet(ralph);
@@ -110,9 +112,9 @@ public class PetShelterTest {
 	@Test
 	public void shouldPlayWithAllPets() {
 		PetShelter underTest = new PetShelter();
-		OrganicPet buddy = new OrganicPet("Buddy");
-		OrganicPet ralph = new OrganicPet("Ralph");
-		RoboticPet george = new RoboticPet("George");
+		OrganicPet buddy = new OrganicDog("Buddy");
+		OrganicPet ralph = new OrganicDog("Ralph");
+		RoboticPet george = new RoboticDog("George");
 
 		underTest.addVirtualPet(buddy);
 		underTest.addVirtualPet(ralph);
@@ -128,9 +130,9 @@ public class PetShelterTest {
 	@Test
 	public void shouldWalkAllPets() {
 		PetShelter underTest = new PetShelter();
-		OrganicPet buddy = new OrganicPet("Buddy");
-		OrganicPet ralph = new OrganicPet("Ralph");
-		RoboticPet george = new RoboticPet("George");
+		OrganicPet buddy = new OrganicDog("Buddy");
+		OrganicPet ralph = new OrganicDog("Ralph");
+		RoboticPet george = new RoboticDog("George");
 
 		underTest.addVirtualPet(buddy);
 		underTest.addVirtualPet(ralph);
@@ -146,9 +148,9 @@ public class PetShelterTest {
 	@Test
 	public void shouldHugAllPets() {
 		PetShelter underTest = new PetShelter();
-		OrganicPet buddy = new OrganicPet("Buddy");
-		OrganicPet ralph = new OrganicPet("Ralph");
-		RoboticPet george = new RoboticPet("George");
+		OrganicPet buddy = new OrganicDog("Buddy");
+		OrganicPet ralph = new OrganicDog("Ralph");
+		RoboticPet george = new RoboticDog("George");
 
 		underTest.addVirtualPet(buddy);
 		underTest.addVirtualPet(ralph);
