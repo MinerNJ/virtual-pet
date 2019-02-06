@@ -31,8 +31,12 @@ public abstract class OrganicPet extends VirtualPet {
 
 	public int getHealth() {
 		health = 100 - (hunger + getBoredom() + bladder + getLoneliness());
+		if (health<0) {
+			health = 0;
+		}
 		return health;
-	}
+		}
+		
 
 	// time method
 	public void tick(int turnCount) {
