@@ -37,6 +37,7 @@ public class Application {
 			}
 
 			System.out.println("What would you like to do?");
+			System.out.println("Please enter a number to make a menu selection.");
 			System.out.println("1. Admit new pet to the shelter");
 			System.out.println("2. Adopt out a shelter pet");
 			System.out.println("3. Check shelter status");
@@ -176,7 +177,7 @@ public class Application {
 
 					String petSelection = input.nextLine();
 
-					VirtualPet petChoice = petShelter.findVirtualPet(petSelection);
+					VirtualPet petChoice = petShelter.findVirtualPet(petSelection.toLowerCase());
 					System.out.println(petSelection + " is so happy to see you! What do you want to do?");
 
 					boolean petMenu = true; // organicePetMenu & roboticPetMenu
@@ -326,12 +327,12 @@ public class Application {
 				String secondAnswer = input.nextLine();
 				if (secondAnswer.equals("1")) {
 					String robotName = "Robo" + newPetName;
-					RoboticPet pet = new RoboticDog(robotName);
+					VirtualPet pet = new RoboticDog(robotName.toLowerCase());
 					System.out.println("Here's your new Robot Dog, " + pet.getName() + "!");
 					petShelter.addVirtualPet(pet);
 				} else if (secondAnswer.equals("2")) {
 					String robotName = "Robo" + newPetName;
-					RoboticPet pet = new RoboticCat(robotName);
+					VirtualPet pet = new RoboticCat(robotName.toLowerCase());
 					petShelter.addVirtualPet(pet);
 					System.out.println("Here's your new Robotic Cat, " + pet.getName() + "!");
 				}
@@ -341,11 +342,11 @@ public class Application {
 				System.out.println("2. No");
 				String thirdAnswer = input.nextLine();
 				if (thirdAnswer.equals("1")) {
-					OrganicPet pet = new OrganicDog(newPetName);
+					VirtualPet pet = new OrganicDog(newPetName.toLowerCase());
 					System.out.println("Here's your new Dog, " + pet.getName() + "!");
 					petShelter.addVirtualPet(pet);
 				} else if (thirdAnswer.equals("2")) {
-					OrganicPet pet = new OrganicCat(newPetName);
+					VirtualPet pet = new OrganicCat(newPetName.toLowerCase());
 					System.out.println("Here's your new Cat, " + pet.getName() + "!");
 					petShelter.addVirtualPet(pet);
 				}
