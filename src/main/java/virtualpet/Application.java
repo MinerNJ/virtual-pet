@@ -173,12 +173,12 @@ public class Application {
 				// Interact with one pet
 				case "5":
 					System.out.println("Which pet do you want to interact with?");
+					System.out.println("(Type carefully!!)");
 					petShelter.getPetNames();
 
 					String petSelection = input.nextLine();
-
 					VirtualPet petChoice = petShelter.findVirtualPet(petSelection.toLowerCase());
-					System.out.println(petSelection + " is so happy to see you! What do you want to do?");
+					System.out.println(petChoice.getName() + " is so happy to see you! What do you want to do?");
 
 					boolean petMenu = true; // organicePetMenu & roboticPetMenu
 					while (petMenu) {
@@ -330,11 +330,15 @@ public class Application {
 					VirtualPet pet = new RoboticDog(robotName.toLowerCase());
 					System.out.println("Here's your new Robot Dog, " + pet.getName() + "!");
 					petShelter.addVirtualPet(pet);
+					System.out.println(
+							"Keep your new pet " + "happy by feeding it, playing with it, walking it, and hugging it.");
 				} else if (secondAnswer.equals("2")) {
 					String robotName = "Robo" + newPetName;
 					VirtualPet pet = new RoboticCat(robotName.toLowerCase());
 					petShelter.addVirtualPet(pet);
 					System.out.println("Here's your new Robotic Cat, " + pet.getName() + "!");
+					System.out.println(
+							"Keep your new pet " + "happy by feeding it, playing with it, walking it, and hugging it.");
 				}
 			} else if (nameAnswer.equals("2")) {
 				System.out.println("Does " + newPetName + " chase its tail?");
@@ -345,48 +349,50 @@ public class Application {
 					VirtualPet pet = new OrganicDog(newPetName.toLowerCase());
 					System.out.println("Here's your new Dog, " + pet.getName() + "!");
 					petShelter.addVirtualPet(pet);
+					System.out.println(
+							"Keep your new pet " + "happy by feeding it, playing with it, walking it, and hugging it.");
 				} else if (thirdAnswer.equals("2")) {
 					VirtualPet pet = new OrganicCat(newPetName.toLowerCase());
 					System.out.println("Here's your new Cat, " + pet.getName() + "!");
 					petShelter.addVirtualPet(pet);
+					System.out.println(
+							"Keep your new pet " + "happy by feeding it, playing with it, walking it, and hugging it.");
 				}
 			}
-
-			System.out.println(
-					"Keep your new pet " + "happy by feeding it, playing with it, walking it, and hugging it.");
 		}
 	}
 
 	public static void mortalityTest(PetShelter petShelter) {
 		for (VirtualPet pet : petShelter.getVirtualPets().values()) {
 			if (pet instanceof OrganicPet) {
-				if (((OrganicPet) pet).getHealth() <= 25) {
-					System.out.println(((OrganicPet) pet).getName() + " has died, you monster!");
-					petShelter.removeVirtualPet(pet);
-				} else if (((OrganicPet) pet).getHealth() <= 40) {
+				if (((OrganicPet) pet).getHealth() <= 40 && ((OrganicPet) pet).getHealth()>25) {
 					System.out.println(((OrganicPet) pet).getName() + " is unhappy! Make sure "
 							+ ((OrganicPet) pet).getName() + " doesn't die!");
+				} else if (((OrganicPet) pet).getHealth() <= 25) {
+					System.out.println(((OrganicPet) pet).getName() + " has died, you monster!");
+					petShelter.removeVirtualPet(pet);
 				}
 			}
 			if (pet instanceof RoboticPet) {
-				if (((RoboticPet) pet).getPerformance() <= 0) {
-					System.out.println(((RoboticPet) pet).getName() + " has shut down, you monster!");
-					petShelter.removeVirtualPet(pet);
-				} else if (((RoboticPet) pet).getPerformance() <= 20) {
+				if (((RoboticPet) pet).getPerformance() <= 20 && ((RoboticPet) pet).getPerformance()>0) {
 					System.out.println(((RoboticPet) pet).getName() + " is malfunctioning! Make sure "
 							+ ((RoboticPet) pet).getName() + " doesn't shut down!");
+				} else if (((RoboticPet) pet).getPerformance() <= 0) {
+					System.out.println(((RoboticPet) pet).getName() + " has shut down, you monster!");
+					petShelter.removeVirtualPet(pet);
 				}
 			}
 		}
-		if (petShelter.getCleanliness() <= 25) {
+		if (petShelter.getCleanliness() <= 50 && petShelter.getCleanliness()>25) {
+			System.out.println("Your shelter is " + petShelter.getCleanliness() + "% clean.");
+			System.out.println("Clean your shelter regularly to avoid eviction.");
+		
+		} else if (petShelter.getCleanliness() <= 25) {
 			System.out.println("Your shelter is too dirty and is endangering your pets.");
 			System.out.println("The building has been condemned by the city.");
 			System.out.println("All pets were transferred to another shelter.");
 			System.out.println("GAME OVER");
 			System.exit(0);
-		} else if (petShelter.getCleanliness() <= 50) {
-			System.out.println("Your shelter is " + petShelter.getCleanliness() + "% clean.");
-			System.out.println("Clean your shelter regularly to avoid eviction.");
 		}
 	}
 }

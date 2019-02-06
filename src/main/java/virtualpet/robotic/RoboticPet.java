@@ -29,7 +29,10 @@ public abstract class RoboticPet extends VirtualPet implements Purr {
 
 	public int getPerformance() {
 		performance = 100 - (batteryLife + getBoredom() + oilGauge + getLoneliness());
-		return performance;
+		if (performance<0) {
+			performance = 0;
+		}
+				return performance;
 	}
 
 	// time method

@@ -18,6 +18,9 @@ public class PetShelter {
 	}
 
 	public int getCleanliness() {
+		if (cleanliness<0) {
+			cleanliness = 0;
+		}
 		return cleanliness;
 	}
 
@@ -90,5 +93,9 @@ public class PetShelter {
 		for (VirtualPet pet : virtualPets) {
 			pet.hug();
 		}
+	}
+
+	public boolean containsKey(String name) {
+		return true;
 	}
 }
