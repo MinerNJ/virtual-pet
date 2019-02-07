@@ -194,6 +194,8 @@ public class Application {
 							}
 						}
 
+						mortalityTest(petShelter);
+
 						System.out.println("1. Feed " + petChoice.getName());
 						System.out.println("2. Play with " + petChoice.getName());
 						System.out.println("3. Walk " + petChoice.getName());
@@ -279,8 +281,6 @@ public class Application {
 							System.out.println(petChoice.getName() + " had a lot of fun! Bye!");
 							break;
 						}
-
-						mortalityTest(petShelter);
 					}
 				}
 			}
@@ -394,6 +394,8 @@ public class Application {
 			System.out.println("All pets were transferred to another shelter.");
 			System.out.println("GAME OVER");
 			System.exit(0);
+		} else {
+
 		}
 	}
 }
