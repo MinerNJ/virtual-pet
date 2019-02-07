@@ -1,0 +1,19 @@
+NOTES!!!!! ABOUT VIRTUAL PET PROJECT
+
+By passing in all statuses from constructor is the plan to give user access to change them
+Good Job with findVirtualPet
+Pet Shelter Line 7  may want to include list or HashMap in the HashMaps variable name, may be confusing 
+Add Documentation
+Application class is very good
+Maybe add a way that user can check the status of their pet throughout the game
+Application Class:
+ to make readablity easier instead of toLowerCase().equals()  you can just call .equalsIgnoreCase()
+
+ NOTES FROM LOOKING AT OTHER GROUP'S APP
+ you can give values in the properties (they gave boredom and whatnot initial values in the pet class)
+ can use boolean for whether pet is organic or not
+ "raw" used for "rawName",etc, to show user input
+ instead of using happiness, they have the pet faint "if" values drop below a certain number
+ their getStatusChange adds properties to previous property value
+ they had tests for each property (boredom, etc) after ticks and after playing and whatnot
+ cleaning shelter
