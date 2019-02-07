@@ -365,28 +365,29 @@ public class Application {
 	public static void mortalityTest(PetShelter petShelter) {
 		for (VirtualPet pet : petShelter.getVirtualPets().values()) {
 			if (pet instanceof OrganicPet) {
-				if (((OrganicPet) pet).getHealth() <= 40 && ((OrganicPet) pet).getHealth()>25) {
+				if (((OrganicPet) pet).getHealth() <= 40 && ((OrganicPet) pet).getHealth() > 25) {
 					System.out.println(((OrganicPet) pet).getName() + " is unhappy! Make sure "
 							+ ((OrganicPet) pet).getName() + " doesn't die!");
 				} else if (((OrganicPet) pet).getHealth() <= 25) {
 					System.out.println(((OrganicPet) pet).getName() + " has died, you monster!");
 					petShelter.removeVirtualPet(pet);
 				}
-			}
-			if (pet instanceof RoboticPet) {
-				if (((RoboticPet) pet).getPerformance() <= 20 && ((RoboticPet) pet).getPerformance()>0) {
+			} else if (pet instanceof RoboticPet) {
+				if (((RoboticPet) pet).getPerformance() <= 20 && ((RoboticPet) pet).getPerformance() > 0) {
 					System.out.println(((RoboticPet) pet).getName() + " is malfunctioning! Make sure "
 							+ ((RoboticPet) pet).getName() + " doesn't shut down!");
 				} else if (((RoboticPet) pet).getPerformance() <= 0) {
 					System.out.println(((RoboticPet) pet).getName() + " has shut down, you monster!");
 					petShelter.removeVirtualPet(pet);
 				}
+			} else {
+
 			}
 		}
-		if (petShelter.getCleanliness() <= 50 && petShelter.getCleanliness()>25) {
+		if (petShelter.getCleanliness() <= 50 && petShelter.getCleanliness() > 25) {
 			System.out.println("Your shelter is " + petShelter.getCleanliness() + "% clean.");
 			System.out.println("Clean your shelter regularly to avoid eviction.");
-		
+
 		} else if (petShelter.getCleanliness() <= 25) {
 			System.out.println("Your shelter is too dirty and is endangering your pets.");
 			System.out.println("The building has been condemned by the city.");
